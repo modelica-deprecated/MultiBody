@@ -9,9 +9,12 @@ The `MultiBody` library is a free Modelica package providing 3-dimensional mecha
 
 ## Current release
 
-Download [MultiBody v0.98 (2003-10-27)](../../archive/v0.98.zip)
+Download [MultiBody v1.0 (2004-03-03)](../../archive/v1.0.zip)
 
 #### Release notes
+
+*  [Version v1.0 (2004-03-03)](../../archive/v1.0.zip)
+ * This version is not backward compatible to version 0.99. Models generated with previous MultiBody versions are automatically converted to the new release.The incompatible changes are due to improving the efficiency of the library. This required to change function interfaces in MultiBody.Frames: `angularVelocity1`, `angularVelocity2`, `planarRotation`, `axisRotation`, `axesRotations`, `from_T`, `from_T_inv`, `from_Q`. Furthermore, `MultiBody.Frames.Orientation` has changed. As a consequence, all code that accesses objects of this type directly is no longer valid.
 
 *  [Version v0.98 (2003-10-27)](../../archive/v0.98.zip)
  * This version is not backward compatible to the previous MultiBody versions, since the initialization has changed. Parameter "startValuesFixed" is no longer present and is replaced by parameter "initType" (see below). Models generated with previous MultiBody versions are automatically converted to the new release.
