@@ -1,0 +1,1714 @@
+<HTML>
+<HEAD><META name="HTML-Generator" content="Dymola"><TITLE>MultiBody</TITLE></HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Joints<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="MultiBody.Joints"></A><A HREF="MultiBody.html#MultiBody"
+>MultiBody</A>.Joints</H2>
+<B>Components that constrain the motion between two frames</B>
+<P>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.Prismatic"
+><IMG SRC="MultiBody.Joints.PrismaticI.png" ALT="MultiBody.Joints.Prismatic" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.ActuatedPrismatic"
+><IMG SRC="MultiBody.Joints.ActuatedPrismaticI.png" ALT="MultiBody.Joints.ActuatedPrismatic" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.Revolute"
+><IMG SRC="MultiBody.Joints.RevoluteI.png" ALT="MultiBody.Joints.Revolute" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.ActuatedRevolute"
+><IMG SRC="MultiBody.Joints.ActuatedRevoluteI.png" ALT="MultiBody.Joints.ActuatedRevolute" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.Cylindrical"
+><IMG SRC="MultiBody.Joints.CylindricalI.png" ALT="MultiBody.Joints.Cylindrical" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.Universal"
+><IMG SRC="MultiBody.Joints.UniversalI.png" ALT="MultiBody.Joints.Universal" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.Planar"
+><IMG SRC="MultiBody.Joints.PlanarI.png" ALT="MultiBody.Joints.Planar" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.Spherical"
+><IMG SRC="MultiBody.Joints.SphericalI.png" ALT="MultiBody.Joints.Spherical" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.FreeMotion"
+><IMG SRC="MultiBody.Joints.FreeMotionI.png" ALT="MultiBody.Joints.FreeMotion" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.SphericalSpherical"
+><IMG SRC="MultiBody.Joints.SphericalSphericalI.png" ALT="MultiBody.Joints.SphericalSpherical" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints.html#MultiBody.Joints.UniversalSpherical"
+><IMG SRC="MultiBody.Joints.UniversalSphericalI.png" ALT="MultiBody.Joints.UniversalSpherical" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints_Assemblies.html#MultiBody.Joints.Assemblies"
+><IMG SRC="MultiBody.Joints.AssembliesI.png" ALT="MultiBody.Joints.Assemblies" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Joints_Internal.html#MultiBody.Joints.Internal"
+><IMG SRC="MultiBody.Joints.InternalI.png" ALT="MultiBody.Joints.Internal" WIDTH=80  HEIGHT=80 ></A>
+<P><P>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This package contains <b>joint components</b>,
+that is, idealized, massless elements that constrain
+the motion between frames. In subpackage <b>Assemblies</b>
+aggregation joint components are provided to handle
+kinematic loops analytically (this means that non-linear systems
+of equations occuring in these joint aggregations are analytically
+solved, i.e., robustly and efficiently).
+</p>
+<pre></PRE><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.Prismatic"
+>Prismatic</A>
+</TD><TD>Prismatic joint (1 translational degree-of-freedom, 2 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.ActuatedPrismatic"
+>ActuatedPrismatic</A>
+</TD><TD>Actuated prismatic joint (1 translational degree-of-freedom, 2 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.Revolute"
+>Revolute</A>
+</TD><TD>Revolute joint (1 rotational degree-of-freedom, 2 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.ActuatedRevolute"
+>ActuatedRevolute</A>
+</TD><TD>Actuated revolute joint (1 rotational degree-of-freedom, 2 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.Cylindrical"
+>Cylindrical</A>
+</TD><TD>Cylindrical joint (2 degrees-of-freedom, 4 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.Universal"
+>Universal</A>
+</TD><TD>Universal joint (2 degrees-of-freedom, 4 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.Planar"
+>Planar</A>
+</TD><TD>Planar joint (3 degrees-of-freedom, 6 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.Spherical"
+>Spherical</A>
+</TD><TD>Spherical joint (3 constraints, no potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.FreeMotion"
+>FreeMotion</A>
+</TD><TD>Free motion joint (6 degrees-of-freedom, 12 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.SphericalSpherical"
+>SphericalSpherical</A>
+</TD><TD>Spherical - spherical joint aggregation (1 constraint, no potential states) with an optional point mass in the middle</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints.html#MultiBody.Joints.UniversalSpherical"
+>UniversalSpherical</A>
+</TD><TD>Universal - spherical joint aggregation (1 constraint, no potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints_Assemblies.html#MultiBody.Joints.Assemblies"
+>Assemblies</A>
+</TD><TD>Joint aggregations for analytic loop handling</TD></TR>
+<TR><TD><A HREF="MultiBody_Joints_Internal.html#MultiBody.Joints.Internal"
+>Internal</A>
+</TD><TD>Components used for analytic solution of kinematic loops (use only if you know what you are doing)</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Prismatic<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.PrismaticI.png" ALT="MultiBody.Joints.Prismatic" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.Prismatic"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.Prismatic</H2>
+<B>Prismatic joint (1 translational degree-of-freedom, 2 potential states)</B><p>
+<IMG SRC="MultiBody.Joints.PrismaticD.png" ALT="MultiBody.Joints.Prismatic">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint where frame_b is translated along axis n which is fixed in frame_a.
+The two frames coincide when "s + s_offset = 0", where
+"s_offset" is a parameter with a zero default
+and "s" is the relative distance.
+</p>
+<p>
+In the "Advanced" menu it can be defined via parameter <b>enforceStates</b>
+that the relative distance "s" and its derivative shall be definitely
+used as states (this means that the Modelica attributes stateSelect=StateSelect.always
+are set on these variables). The states are usually selected automatically.
+In certain situations, especially when closed kinematic loops are present,
+it might be slightly more efficient, when using the "enforceStates" setting.
+</p>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>n</TD><TD>{1,0,0}</TD><TD>Axis of translation resolved in frame_a (= same as in frame_b)</TD></TR>
+<TR><TD>s_offset</TD><TD>0</TD><TD>Relative distance offset (distance between frame_a and frame_b = s_offset + s) [m]</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>s_start</TD><TD>0</TD><TD> Initial value of distance (fixed or guess value) [m]</TD></TR>
+<TR><TD>v_start</TD><TD>0</TD><TD> Initial value of relative velocity v = der(s) [m/s]</TD></TR>
+<TR><TD>a_start</TD><TD>0</TD><TD> Initial value of relative acceleration a = der(v) [m/s2]</TD></TR>
+<TR><TD>boxWidthDirection</TD><TD>{0,1,0}</TD><TD> Vector in width direction of box, resolved in frame_a</TD></TR>
+<TR><TD>boxWidth</TD><TD>world.defaultJointWidth</TD><TD> Width of prismatic joint box [m]</TD></TR>
+<TR><TD>boxHeight</TD><TD>boxWidth</TD><TD> Height of prismatic joint box [m]</TD></TR>
+<TR><TD>boxColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of prismatic joint box</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if generalized variables (s,v) shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Prismatic <font color="darkgreen">
+  &quot;Prismatic joint (1 translational degree-of-freedom, 2 potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">extends </font><A HREF="MultiBody_Joints_Internal.html#MultiBody.Joints.Internal.Prismatic"
+>Internal.Prismatic</A>;
+  <font color="darkgreen"></font>
+  <font color="darkgreen"></font>
+<font color="blue">end </font>Prismatic;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE ActuatedPrismatic<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.ActuatedPrismaticI.png" ALT="MultiBody.Joints.ActuatedPrismatic" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.ActuatedPrismatic"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.ActuatedPrismatic</H2>
+<B>Actuated prismatic joint (1 translational degree-of-freedom, 2 potential states)</B><p>
+<IMG SRC="MultiBody.Joints.ActuatedPrismaticD.png" ALT="MultiBody.Joints.ActuatedPrismatic">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint where frame_b is translated along axis n which is fixed in frame_a.
+The two frames coincide when "s + s_offset = 0", where
+"s_offset" is a parameter with a zero default
+and "s" is the relative distance.
+</p>
+<p>
+The prismatic joint has two additional 1-dimensional mechanical flanges
+(flange "axis" represents the driving flange and
+flange "bearing" represents the bearing) where it can be
+driven with elements of the Modelica.Mechanics.Translational library.
+</p>
+<p>
+In the "Advanced" menu it can be defined via parameter <b>enforceStates</b>
+that the relative distance "s" and its derivative shall be definitely
+used as states (this means that the Modelica attributes stateSelect=StateSelect.always
+are set on these variables). The states are usually selected automatically.
+In certain situations, especially when closed kinematic loops are present,
+it might be slightly more efficient, when using the "enforceStates" setting.
+</p>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>n</TD><TD>{1,0,0}</TD><TD>Axis of translation resolved in frame_a (= same as in frame_b)</TD></TR>
+<TR><TD>s_offset</TD><TD>0</TD><TD>Relative distance offset (distance between frame_a and frame_b = s_offset + s) [m]</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>s_start</TD><TD>0</TD><TD> Initial value of distance (fixed or guess value) [m]</TD></TR>
+<TR><TD>v_start</TD><TD>0</TD><TD> Initial value of relative velocity v = der(s) [m/s]</TD></TR>
+<TR><TD>a_start</TD><TD>0</TD><TD> Initial value of relative acceleration a = der(v) [m/s2]</TD></TR>
+<TR><TD>boxWidthDirection</TD><TD>{0,1,0}</TD><TD> Vector in width direction of box, resolved in frame_a</TD></TR>
+<TR><TD>boxWidth</TD><TD>world.defaultJointWidth</TD><TD> Width of prismatic joint box [m]</TD></TR>
+<TR><TD>boxHeight</TD><TD>boxWidth</TD><TD> Height of prismatic joint box [m]</TD></TR>
+<TR><TD>boxColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of prismatic joint box</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if generalized variables (s,v) shall be used as states</TD></TR>
+<TR><TD>f</TD><TD>axis.f</TD><TD>Actuation force in direction of joint axis [N]</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> ActuatedPrismatic <font color="darkgreen">
+  &quot;Actuated prismatic joint (1 translational degree-of-freedom, 2 potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">extends </font><A HREF="MultiBody_Joints_Internal.html#MultiBody.Joints.Internal.Prismatic"
+>Internal.Prismatic</A>(f=axis.f);
+  Modelica.Mechanics.Translational.Interfaces.Flange_a axis;
+  Modelica.Mechanics.Translational.Interfaces.Flange_b bearing;
+<font color="blue">equation </font>
+  axis.s = s;
+  bearing.s = 0;
+<font color="blue">end </font>ActuatedPrismatic;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Revolute<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.RevoluteI.png" ALT="MultiBody.Joints.Revolute" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.Revolute"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.Revolute</H2>
+<B>Revolute joint (1 rotational degree-of-freedom, 2 potential states)</B><p>
+<IMG SRC="MultiBody.Joints.RevoluteD.png" ALT="MultiBody.Joints.Revolute">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint where frame_b rotates around axis n which is fixed in frame_a.
+The two frames coincide when "phi + phi_offset = 0", where
+"phi_offset" is a parameter with a zero default
+and "phi" is the rotation angle.
+</p>
+<p>
+In the "Advanced" menu it can be defined via parameter <b>enforceStates</b>
+that the rotation angle "phi" and its derivative shall be definitely
+used as states (this means that the Modelica attributes stateSelect=StateSelect.always
+are set on these variables). The states are usually selected automatically.
+In certain situations, especially when closed kinematic loops are present,
+it might be slightly more efficient, when using the "enforceStates" setting.
+</p>
+<p>
+If a <b>planar loop</b> is present, e.g., consisting of 4 revolute joints
+where the joint axes are all parallel to each other, then there is no
+longer a unique mathematical solution and the symbolic algorithms will
+fail. Usually, an error message will be printed pointing out this
+situation. In this case, parameter <b>planarCutJoint</b> in the "Advanced"
+menu of one of the revolute joints has to be set to <b>true</b>. The
+effect is that from the 5 constraints of a usual revolute joint,
+3 constraints are removed and replaced by appropriate known
+variables (e.g., the force in the direction of the axis of rotation is
+treated as known with value equal to zero; for standard revolute joints,
+this force is an unknown quantity).
+</p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show axis as cylinder)</TD></TR>
+<TR><TD>n</TD><TD>{0,0,1}</TD><TD>Axis of rotation resolved in frame_a (= same as in frame_b)</TD></TR>
+<TR><TD>phi_offset</TD><TD>0</TD><TD>Relative angle offset (angle = phi + from_deg(phi_offset)) [deg]</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>phi_start</TD><TD>0</TD><TD> Initial value of rotation angle phi (fixed or guess value) [deg]</TD></TR>
+<TR><TD>w_start</TD><TD>0</TD><TD> Initial value of relative angular velocity w = der(phi) [deg/s]</TD></TR>
+<TR><TD>a_start</TD><TD>0</TD><TD> Initial value of relative angular acceleration a = der(w) [deg/s2]</TD></TR>
+<TR><TD>cylinderLength</TD><TD>world.defaultJointLength</TD><TD> Length of cylinder representing the joint axis [m]</TD></TR>
+<TR><TD>cylinderDiameter</TD><TD>world.defaultJointWidth</TD><TD> Diameter of cylinder representing the joint axis [m]</TD></TR>
+<TR><TD>cylinderColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of cylinder representing the joint axis</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if generalized variables (phi,w) shall be used as states</TD></TR>
+<TR><TD>planarCutJoint</TD><TD>false</TD><TD> = true, if joint shall be used as cut-joint in a planar loop</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Revolute <font color="darkgreen">
+  &quot;Revolute joint (1 rotational degree-of-freedom, 2 potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">extends </font><A HREF="MultiBody_Joints_Internal.html#MultiBody.Joints.Internal.Revolute"
+>Internal.Revolute</A>;
+  <font color="darkgreen"></font>
+<font color="blue">end </font>Revolute;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE ActuatedRevolute<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.ActuatedRevoluteI.png" ALT="MultiBody.Joints.ActuatedRevolute" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.ActuatedRevolute"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.ActuatedRevolute</H2>
+<B>Actuated revolute joint (1 rotational degree-of-freedom, 2 potential states)</B><p>
+<IMG SRC="MultiBody.Joints.ActuatedRevoluteD.png" ALT="MultiBody.Joints.ActuatedRevolute">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint where frame_b rotates around axis n which is fixed in frame_a.
+The two frames coincide when "phi + phi_offset = 0", where
+"phi_offset" is a parameter with a zero default
+and "phi" is the rotation angle.
+</p>
+<p>
+The revolute joint has two additional 1-dimensional mechanical flanges
+(flange "axis" represents the driving flange and
+flange "bearing" represents the bearing) where it can be
+driven with elements of the Modelica.Mechanics.Rotational library.
+</p>
+<p>
+In the "Advanced" menu it can be defined via parameter <b>enforceStates</b>
+that the rotation angle "phi" and its derivative shall be definitely
+used as states (this means that the Modelica attributes stateSelect=StateSelect.always
+are set on these variables). The states are usually selected automatically.
+In certain situations, especially when closed kinematic loops are present,
+it might be slightly more efficient, when using the "enforceStates" setting.
+</p>
+<p>
+If a <b>planar loop</b> is present, e.g., consisting of 4 revolute joints
+where the joint axes are all parallel to each other, then there is no
+longer a unique mathematical solution and the symbolic algorithms will
+fail. Usually, an error message will be printed pointing out this
+situation. In this case, parameter <b>planarCutJoint</b> in the "Advanced"
+menu of one of the revolute joints has to be set to <b>true</b>. The
+effect is that from the 5 constraints of a usual revolute joint,
+3 constraints are removed and replaced by appropriate known
+variables (e.g., the force in the direction of the axis of rotation is
+treated as known with value equal to zero; for standard revolute joints,
+this force is an unknown quantity).
+</p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show axis as cylinder)</TD></TR>
+<TR><TD>n</TD><TD>{0,0,1}</TD><TD>Axis of rotation resolved in frame_a (= same as in frame_b)</TD></TR>
+<TR><TD>phi_offset</TD><TD>0</TD><TD>Relative angle offset (angle = phi + from_deg(phi_offset)) [deg]</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>phi_start</TD><TD>0</TD><TD> Initial value of rotation angle phi (fixed or guess value) [deg]</TD></TR>
+<TR><TD>w_start</TD><TD>0</TD><TD> Initial value of relative angular velocity w = der(phi) [deg/s]</TD></TR>
+<TR><TD>a_start</TD><TD>0</TD><TD> Initial value of relative angular acceleration a = der(w) [deg/s2]</TD></TR>
+<TR><TD>cylinderLength</TD><TD>world.defaultJointLength</TD><TD> Length of cylinder representing the joint axis [m]</TD></TR>
+<TR><TD>cylinderDiameter</TD><TD>world.defaultJointWidth</TD><TD> Diameter of cylinder representing the joint axis [m]</TD></TR>
+<TR><TD>cylinderColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of cylinder representing the joint axis</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if generalized variables (phi,w) shall be used as states</TD></TR>
+<TR><TD>planarCutJoint</TD><TD>false</TD><TD> = true, if joint shall be used as cut-joint in a planar loop</TD></TR>
+<TR><TD>tau</TD><TD>axis.tau</TD><TD>Driving torque in direction of axis of rotation [N.m]</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> ActuatedRevolute <font color="darkgreen">
+  &quot;Actuated revolute joint (1 rotational degree-of-freedom, 2 potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">extends </font><A HREF="MultiBody_Joints_Internal.html#MultiBody.Joints.Internal.Revolute"
+>Internal.Revolute</A>(tau=axis.tau);
+  Modelica.Mechanics.Rotational.Interfaces.Flange_a axis;
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b bearing;
+<font color="blue">equation </font>
+  axis.phi = phi;
+  bearing.phi = 0;
+<font color="blue">end </font>ActuatedRevolute;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Cylindrical<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.CylindricalI.png" ALT="MultiBody.Joints.Cylindrical" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.Cylindrical"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.Cylindrical</H2>
+<B>Cylindrical joint (2 degrees-of-freedom, 4 potential states)</B><p>
+<IMG SRC="MultiBody.Joints.CylindricalD.png" ALT="MultiBody.Joints.Cylindrical">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint where frame_b rotates around and translates along axis n
+which is fixed in frame_a. The two frames coincide when
+"revolute.phi=0" and "prismatic.s=0". This joint
+has the following potential states;
+<ul>
+<li> The relative angle revolute.phi [rad] around axis n, </li>
+<li> the relative distance prismatic.s [m] along axis n, </li>
+<li> the relative angular velocity revolute.w [rad/s] (= der(revolute.phi))
+     and </li>
+<li> the relative velocity prismatic.v [m/s] (= der(prismatic.s)).</li>
+</ul>
+<p>
+They are used as candidates for automatic selection of states
+from the tool. This may be enforced by setting "enforceStates=<b>true</b>"
+in the <b>Advanced</b> menu (this means that the Modelica
+attributes stateSelect=StateSelect.always
+are set on these variables). The states are usually selected automatically.
+In certain situations, especially when closed kinematic loops are present,
+it might be slightly more efficient, when using the "enforceStates" setting.
+</p>
+<p>
+This joint is visualized as cylinder along axis n from
+the origin of frame_a to the origin of frame_b.
+</p>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show cylinder)</TD></TR>
+<TR><TD>n</TD><TD>{1,0,0}</TD><TD>Cylinder axis resolved in frame_a (= same as in frame_b)</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>phi_start</TD><TD>0</TD><TD> Initial value of rotation angle phi (fixed or guess value) [deg]</TD></TR>
+<TR><TD>s_start</TD><TD>0</TD><TD> Initial value of relative distance (fixed or guess value) [m]</TD></TR>
+<TR><TD>w_start</TD><TD>0</TD><TD> Initial value of relative angular velocity w = der(phi) [deg/s]</TD></TR>
+<TR><TD>v_start</TD><TD>0</TD><TD> Initial value of relative velocity v = der(s) [m/s]</TD></TR>
+<TR><TD>a_start</TD><TD>0</TD><TD> Initial value of relative acceleration a = der(v) [m/s2]</TD></TR>
+<TR><TD>wd_start</TD><TD>0</TD><TD> Initial value of relative angular acceleration wd = der(w) [deg/s2]</TD></TR>
+<TR><TD>cylinderDiameter</TD><TD>world.defaultJointWidth</TD><TD> Diameter of cylinder [m]</TD></TR>
+<TR><TD>cylinderColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of cylinder</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if generalized variables shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Cylindrical <font color="darkgreen">
+  &quot;Cylindrical joint (2 degrees-of-freedom, 4 potential states)&quot;</font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">import </font>NonSI = Modelica.SIunits.Conversions.NonSIunits;
+  <font color="blue">extends </font><A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.PartialTwoFrames"
+>MultiBody.Interfaces.PartialTwoFrames</A>;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">
+    &quot;= true, if animation shall be enabled (show cylinder)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n={1,0,0} <font color="darkgreen">
+    &quot;Cylinder axis resolved in frame_a (= same as in frame_b)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_Init.html#MultiBody.Types.Init.Temp"
+>Types.Init.Temp</A> initType=Types.Init.Free <font color="darkgreen">
+    &quot;|Initialization| Type of initialization (defines usage of start values below)&quot;</font>;
+  <font color="blue">parameter </font>NonSI.Angle_deg phi_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of rotation angle phi (fixed or guess value)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position s_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of relative distance (fixed or guess value)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of relative angular velocity w = der(phi)&quot;</font>;
+  <font color="blue">parameter </font>SI.Velocity v_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of relative velocity v = der(s)&quot;</font>;
+  <font color="blue">parameter </font>SI.Acceleration a_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of relative acceleration a = der(v)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> wd_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of relative angular acceleration wd = der(w)&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance cylinderDiameter=world.defaultJointWidth <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of cylinder&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> cylinderColor=Types.Defaults.JointColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of cylinder&quot;</font>;
+  <font color="blue">parameter </font>Boolean enforceStates=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if generalized variables shall be used as states&quot;</font>;
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Prismatic"
+>Prismatic</A> prismatic(
+    n=n,
+    animation=false,
+    enforceStates=enforceStates,
+    initType=initType,
+    s_start=s_start,
+    v_start=v_start,
+    a_start=a_start);
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Revolute"
+>Revolute</A> revolute(
+    n=n,
+    animation=false,
+    enforceStates=enforceStates,
+    initType=initType,
+    phi_start=phi_start,
+    w_start=w_start,
+    a_start=wd_start);
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+<font color="blue">protected </font>
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> cylinder[ndim](
+    <font color="blue">each </font>shapeType=&quot;cylinder&quot;,
+    <font color="blue">each </font>color=cylinderColor,
+    <font color="blue">each </font>length=prismatic.s,
+    <font color="blue">each </font>width=cylinderDiameter,
+    <font color="blue">each </font>height=cylinderDiameter,
+    <font color="blue">each </font>lengthDirection=prismatic.e,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(frame_a, prismatic.frame_a);
+  <font color="red">connect</font>(prismatic.frame_b, revolute.frame_a);
+  <font color="red">connect</font>(revolute.frame_b, frame_b);
+<font color="blue">end </font>Cylindrical;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Universal<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.UniversalI.png" ALT="MultiBody.Joints.Universal" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.Universal"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.Universal</H2>
+<B>Universal joint (2 degrees-of-freedom, 4 potential states)</B><p>
+<IMG SRC="MultiBody.Joints.UniversalD.png" ALT="MultiBody.Joints.Universal">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint where frame_a rotates around axis n_a which is fixed in frame_a
+and frame_b rotates around axis n_b which is fixed in frame_b.
+The two frames coincide when
+"revolute_a.phi=0" and "revolute_b.phi=0". This joint
+has the following potential states;
+<ul>
+<li> The relative angle revolute_a.phi [rad] around axis n_a, </li>
+<li> the relative angle revolute_b.phi [rad] around axis n_b, </li>
+<li> the relative angular velocity revolute_a.w [rad/s] (= der(revolute_a.phi))
+     and </li>
+<li> the relative angular velocity revolute_b.w [rad/s] (= der(revolute_b.phi)).</li>
+</ul>
+<p>
+They are used as candidates for automatic selection of states
+from the tool. This may be enforced by setting "enforceStates=<b>true</b>"
+in the <b>Advanced</b> menu (this means that the Modelica
+attributes stateSelect=StateSelect.always
+are set on these variables). The states are usually selected automatically.
+In certain situations, especially when closed kinematic loops are present,
+it might be slightly more efficient, when using the "enforceStates" setting.
+</p>
+<p>
+This joint is visualized with a cylinder along axis n_a
+and with a cylinder along axis n_b.
+</p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>n_a</TD><TD>{1,0,0}</TD><TD>Axis of revolute joint 1 resolved in frame_a</TD></TR>
+<TR><TD>n_b</TD><TD>{0,1,0}</TD><TD>Axis of revolute joint 2 resolved in frame_b</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>phi_start_a</TD><TD>0</TD><TD> Initial value of rotation angle at frame_a (fixed or guess value) [deg]</TD></TR>
+<TR><TD>phi_start_b</TD><TD>0</TD><TD> Initial value of rotation angle at frame_b (fixed or guess value) [deg]</TD></TR>
+<TR><TD>w_start_a</TD><TD>0</TD><TD> Initial value of derivative of rotation angle at frame_a [deg/s]</TD></TR>
+<TR><TD>w_start_b</TD><TD>0</TD><TD> Initial value of derivative of rotation angle at frame_b [deg/s]</TD></TR>
+<TR><TD>a_start_a</TD><TD>0</TD><TD> Initial value of second derivative of rotation angle at frame_a [deg/s2]</TD></TR>
+<TR><TD>a_start_b</TD><TD>0</TD><TD> Initial value of second derivative of rotation angle at frame_b [deg/s2]</TD></TR>
+<TR><TD>cylinderLength</TD><TD>world.defaultJointLength</TD><TD> Length of cylinders representing the joint axes [m]</TD></TR>
+<TR><TD>cylinderDiameter</TD><TD>world.defaultJointWidth</TD><TD> Diameter of cylinders representing the joint axes [m]</TD></TR>
+<TR><TD>cylinderColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of cylinders representing the joint axes</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if generalized variables shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Universal <font color="darkgreen">
+  &quot;Universal joint (2 degrees-of-freedom, 4 potential states)&quot;</font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">import </font>NonSI = Modelica.SIunits.Conversions.NonSIunits;
+  <font color="blue">extends </font><A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.PartialTwoFrames"
+>MultiBody.Interfaces.PartialTwoFrames</A>;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n_a={1,0,0} <font color="darkgreen">
+    &quot;Axis of revolute joint 1 resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n_b={0,1,0} <font color="darkgreen">
+    &quot;Axis of revolute joint 2 resolved in frame_b&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_Init.html#MultiBody.Types.Init.Temp"
+>Types.Init.Temp</A> initType=Types.Init.Free <font color="darkgreen">
+    &quot;|Initialization| Type of initialization (defines usage of start values below)&quot;</font>;
+  <font color="blue">parameter </font>NonSI.Angle_deg phi_start_a=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of rotation angle at frame_a (fixed or guess value)&quot;</font>;
+  <font color="blue">parameter </font>NonSI.Angle_deg phi_start_b=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of rotation angle at frame_b (fixed or guess value)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_start_a=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of derivative of rotation angle at frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_start_b=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of derivative of rotation angle at frame_b&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> a_start_a=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of second derivative of rotation angle at frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> a_start_b=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of second derivative of rotation angle at frame_b&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>SI.Distance cylinderLength=world.defaultJointLength <font color="darkgreen">
+    &quot;|Animation|if animation = true| Length of cylinders representing the joint axes&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance cylinderDiameter=world.defaultJointWidth <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of cylinders representing the joint axes&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> cylinderColor=Types.Defaults.JointColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of cylinders representing the joint axes&quot;</font>;
+  <font color="blue">parameter </font>Boolean enforceStates=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if generalized variables shall be used as states&quot;</font>;
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Revolute"
+>MultiBody.Joints.Revolute</A> revolute_a(
+    n=n_a,
+    enforceStates=enforceStates,
+    initType=initType,
+    phi_start=phi_start_a,
+    w_start=w_start_a,
+    a_start=a_start_a,
+    cylinderDiameter=cylinderDiameter,
+    cylinderLength=cylinderLength,
+    cylinderColor=cylinderColor,
+    animation=animation);
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Revolute"
+>MultiBody.Joints.Revolute</A> revolute_b(
+    n=n_b,
+    enforceStates=enforceStates,
+    initType=initType,
+    phi_start=phi_start_b,
+    w_start=w_start_b,
+    a_start=a_start_b,
+    animation=animation,
+    cylinderDiameter=cylinderDiameter,
+    cylinderLength=cylinderLength,
+    cylinderColor=cylinderColor);
+<font color="blue">equation </font>
+  <font color="darkgreen"></font>
+  <font color="red">connect</font>(frame_a, revolute_a.frame_a);
+  <font color="red">connect</font>(revolute_b.frame_b, frame_b);
+  <font color="red">connect</font>(revolute_a.frame_b, revolute_b.frame_a);
+<font color="blue">end </font>Universal;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Planar<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.PlanarI.png" ALT="MultiBody.Joints.Planar" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.Planar"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.Planar</H2>
+<B>Planar joint (3 degrees-of-freedom, 6 potential states)</B><p>
+<IMG SRC="MultiBody.Joints.PlanarD.png" ALT="MultiBody.Joints.Planar">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint where frame_b can move in a plane and can rotate around an
+axis orthogonal to the plane. The plane is defined by
+vector n which is perpendicular to the plane and by vector n_x,
+which points in the direction of the x-axis of the plane.
+frame_a and frame_b coincide when prismatic_a.s=0,
+prismatic_b=0 and revolute.phi=0. This joint has the following
+potential states:
+<ul>
+<li> the relative distance prismatic_x.s [m] along axis n_x, </li>
+<li> the relative distance prismatic_y.s [m] along axis n_y = cross(n,n_x), </li>
+<li> the relative angle revolute.phi [rad] around axis n, </li>
+<li> the relative velocity prismatic_x.v [m/s] (= der(prismatic_x.s)).</li>
+<li> the relative velocity prismatic_y.v [m/s] (= der(prismatic_y.s)).</li>
+<li> the relative angular velocity revolute.w [rad/s] (= der(revolute.phi))</li>
+</ul>
+<p>
+The potential states are used as candidates for automatic selection of states
+from the tool. This may be enforced by setting "enforceStates=<b>true</b>"
+in the <b>Advanced</b> menu (this means that the Modelica
+attributes stateSelect=StateSelect.always
+are set on these variables). The states are usually selected automatically.
+In certain situations, especially when closed kinematic loops are present,
+it might be slightly more efficient, when using the "enforceStates" setting.
+</p>
+<p>
+This joint is visualized with a box along axis n_x, a box
+along axis n_y and a cylinder along axis n.
+</p>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>n</TD><TD>{0,0,1}</TD><TD>Axis orthogonal to unconstrained plane, resolved in frame_a (= same as in frame_b)</TD></TR>
+<TR><TD>n_x</TD><TD>{1,0,0}</TD><TD>Vector in direction of x-axis of plane, resolved in frame_a (n_x shall be orthogonal to n)</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>s_start_x</TD><TD>0</TD><TD> Initial value of x-distance (along n_x; fixed or guess value) [m]</TD></TR>
+<TR><TD>s_start_y</TD><TD>0</TD><TD> Initial value of y-distance (along cross(n,n_x); fixed or guess value) [m]</TD></TR>
+<TR><TD>phi_start</TD><TD>0</TD><TD> Initial value of rotation angle along n (fixed or guess value) [deg]</TD></TR>
+<TR><TD>v_start_x</TD><TD>0</TD><TD> Initial value of derivative of x-distance [m/s]</TD></TR>
+<TR><TD>v_start_y</TD><TD>0</TD><TD> Initial value of derivative of y-distance [m/s]</TD></TR>
+<TR><TD>w_start</TD><TD>0</TD><TD> Initial value of derivative of rotation angle [deg/s]</TD></TR>
+<TR><TD>a_start_x</TD><TD>0</TD><TD> Initial value of second derivative of x-distance [m/s2]</TD></TR>
+<TR><TD>a_start_y</TD><TD>0</TD><TD> Initial value of second derivative of y-distance [m/s2]</TD></TR>
+<TR><TD>wd_start</TD><TD>0</TD><TD> Initial value of second derivative of rotation angle [deg/s2]</TD></TR>
+<TR><TD>cylinderLength</TD><TD>world.defaultJointLength</TD><TD> Length of revolute cylinder [m]</TD></TR>
+<TR><TD>cylinderDiameter</TD><TD>world.defaultJointWidth</TD><TD> Diameter of revolute cylinder [m]</TD></TR>
+<TR><TD>cylinderColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of revolute cylinder</TD></TR>
+<TR><TD>boxWidth</TD><TD>0.3*cylinderDiameter</TD><TD> Width of prismatic joint boxes</TD></TR>
+<TR><TD>boxHeight</TD><TD>boxWidth</TD><TD> Height of prismatic joint boxes</TD></TR>
+<TR><TD>boxColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of prismatic joint boxes</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if generalized variables (s,phi,v,w) shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Planar <font color="darkgreen">
+  &quot;Planar joint (3 degrees-of-freedom, 6 potential states)&quot;</font>
+  <font color="blue">import </font>NonSI = Modelica.SIunits.Conversions.NonSIunits;
+  <font color="blue">extends </font><A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.PartialTwoFrames"
+>MultiBody.Interfaces.PartialTwoFrames</A>;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n={0,0,1} <font color="darkgreen">
+    &quot;Axis orthogonal to unconstrained plane, resolved in frame_a (= same as in frame_b)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n_x={1,0,0} <font color="darkgreen">
+    &quot;Vector in direction of x-axis of plane, resolved in frame_a (n_x shall be orthogonal to n)&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_Init.html#MultiBody.Types.Init.Temp"
+>Types.Init.Temp</A> initType=Types.Init.Free <font color="darkgreen">
+    &quot;|Initialization| Type of initialization (defines usage of start values below)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position s_start_x=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of x-distance (along n_x; fixed or guess value)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position s_start_y=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of y-distance (along cross(n,n_x); fixed or guess value)&quot;</font>;
+  <font color="blue">parameter </font>NonSI.Angle_deg phi_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of rotation angle along n (fixed or guess value)&quot;</font>;
+  <font color="blue">parameter </font>SI.Velocity v_start_x=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of derivative of x-distance&quot;</font>;
+  <font color="blue">parameter </font>SI.Velocity v_start_y=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of derivative of y-distance&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of derivative of rotation angle&quot;</font>;
+  <font color="blue">parameter </font>SI.Acceleration a_start_x=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of second derivative of x-distance&quot;</font>;
+  <font color="blue">parameter </font>SI.Acceleration a_start_y=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of second derivative of y-distance&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> wd_start=0 <font color="darkgreen">
+    &quot;|Initialization| Initial value of second derivative of rotation angle&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance cylinderLength=world.defaultJointLength <font color="darkgreen">
+    &quot;|Animation|if animation = true| Length of revolute cylinder&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance cylinderDiameter=world.defaultJointWidth <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of revolute cylinder&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> cylinderColor=Types.Defaults.JointColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of revolute cylinder&quot;</font>;
+  <font color="blue">parameter </font>Real boxWidth=0.3*cylinderDiameter <font color="darkgreen">
+    &quot;|Animation|if animation = true| Width of prismatic joint boxes&quot;</font>;
+  <font color="blue">parameter </font>Real boxHeight=boxWidth <font color="darkgreen">
+    &quot;|Animation|if animation = true| Height of prismatic joint boxes&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> boxColor=Types.Defaults.JointColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of prismatic joint boxes&quot;</font>;
+  <font color="blue">parameter </font>Boolean enforceStates=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if generalized variables (s,phi,v,w) shall be used as states&quot;</font>;
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Prismatic"
+>Prismatic</A> prismatic_x(
+    enforceStates=enforceStates,
+    n=(<font color="red">cross</font>(<font color="red">cross</font>(n, n_x), n)),
+    animation=false,
+    initType=initType,
+    s_start=s_start_x,
+    v_start=v_start_x,
+    a_start=a_start_x);
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Prismatic"
+>Prismatic</A> prismatic_y(
+    enforceStates=enforceStates,
+    n=(<font color="red">cross</font>(n, n_x)),
+    animation=false,
+    initType=initType,
+    s_start=s_start_y,
+    v_start=v_start_y,
+    a_start=a_start_y);
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Revolute"
+>Revolute</A> revolute(
+    enforceStates=enforceStates,
+    n=n,
+    animation=false,
+    initType=initType,
+    phi_start=phi_start,
+    w_start=w_start,
+    a_start=wd_start);
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <font color="blue">parameter </font>Real e[3]=<font color="red">Frames.normalize</font>(n);
+<font color="blue">protected </font>
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> box_x[ndim](
+    <font color="blue">each </font>shapeType=&quot;box&quot;,
+    <font color="blue">each </font>color=boxColor,
+    <font color="blue">each </font>length=prismatic_x.s,
+    <font color="blue">each </font>width=boxWidth,
+    <font color="blue">each </font>height=boxWidth,
+    <font color="blue">each </font>lengthDirection=prismatic_x.e,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> box_y[ndim](
+    <font color="blue">each </font>shapeType=&quot;box&quot;,
+    <font color="blue">each </font>color=boxColor,
+    <font color="blue">each </font>length=prismatic_y.s,
+    <font color="blue">each </font>width=boxWidth,
+    <font color="blue">each </font>height=boxWidth,
+    <font color="blue">each </font>lengthDirection=prismatic_y.e,
+    <font color="blue">each </font>widthDirection={1,0,0},
+    <font color="blue">each </font>r=prismatic_y.frame_a.r_0,
+    <font color="blue">each </font>R=prismatic_y.frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> cylinder[ndim](
+    <font color="blue">each </font>shapeType=&quot;cylinder&quot;,
+    <font color="blue">each </font>color=cylinderColor,
+    <font color="blue">each </font>length=cylinderLength,
+    <font color="blue">each </font>width=cylinderDiameter,
+    <font color="blue">each </font>height=cylinderDiameter,
+    <font color="blue">each </font>lengthDirection=n,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape=-e*(cylinderLength/2),
+    <font color="blue">each </font>r=revolute.frame_b.r_0,
+    <font color="blue">each </font>R=revolute.frame_b.R);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(frame_a, prismatic_x.frame_a);
+  <font color="red">connect</font>(prismatic_x.frame_b, prismatic_y.frame_a);
+  <font color="red">connect</font>(prismatic_y.frame_b, revolute.frame_a);
+  <font color="red">connect</font>(revolute.frame_b, frame_b);
+<font color="blue">end </font>Planar;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Spherical<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.SphericalI.png" ALT="MultiBody.Joints.Spherical" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.Spherical"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.Spherical</H2>
+<B>Spherical joint (3 constraints, no potential states)</B><p>
+<IMG SRC="MultiBody.Joints.SphericalD.png" ALT="MultiBody.Joints.Spherical">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint with <b>3 constraints</b> that define that the origin of
+frame_a and the origin of frame_b coincide. This joint does
+not have potential states.
+</p>
+<p>
+If this joint is used in a chain structure, a Modelica translator
+has to select orientation coordinates of a body as states.
+If this joint is used in a loop structure, it is a <b>cut-joint</b> that
+breaks the loop in independent kinematic pieces, hold together
+by the constraints of this joint. As a result, a Modelica translator
+will first try to select 3 generalized coordinates in the joints of
+the remaining parts of the loop and their first derivative as states
+and if this is not possible, e.g., because there are only spherical
+joints in the loop, will select coordinates from a body of the loop
+as states.
+</p>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show sphere)</TD></TR>
+<TR><TD>sphereDiameter</TD><TD>world.defaultJointLength</TD><TD> Diameter of sphere representing the spherical joint [m]</TD></TR>
+<TR><TD>sphereColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of sphere representing the spherical joint</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Spherical <font color="darkgreen">
+  &quot;Spherical joint (3 constraints, no potential states)&quot;</font>
+  <font color="blue">extends </font><A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.PartialTwoFrames"
+>MultiBody.Interfaces.PartialTwoFrames</A>;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">
+    &quot;= true, if animation shall be enabled (show sphere)&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance sphereDiameter=world.defaultJointLength <font color="darkgreen">
+    &quot;|if animation = true| Diameter of sphere representing the spherical joint&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> sphereColor=Types.Defaults.JointColor <font color="darkgreen">
+    &quot;|if animation = true| Color of sphere representing the spherical joint&quot;</font>;
+  <A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>Frames.Orientation</A> R_rel <font color="darkgreen">
+    &quot;Relative orientation object to rotate from frame_a to frame_b&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> sphere[ndim](
+    <font color="blue">each </font>shapeType=&quot;sphere&quot;,
+    <font color="blue">each </font>color=sphereColor,
+    <font color="blue">each </font>length=sphereDiameter,
+    <font color="blue">each </font>width=sphereDiameter,
+    <font color="blue">each </font>height=sphereDiameter,
+    <font color="blue">each </font>lengthDirection={1,0,0},
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape={-0.5,0,0}*sphereDiameter,
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+<font color="blue">equation </font>
+  <font color="darkgreen">// Constraint equation</font>
+  frame_b.r_0 = frame_a.r_0;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// force balance</font>
+  R_rel = <font color="red">Frames.relativeRotation</font>(frame_a.R, frame_b.R);
+  <font color="red">zeros</font>(3) = frame_a.f + <font color="red">Frames.resolve1</font>(R_rel, frame_b.f);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// d'Alemberts principle + torque balance</font>
+  frame_a.t = <font color="red">zeros</font>(3);
+  frame_b.t = <font color="red">zeros</font>(3);
+<font color="blue">end </font>Spherical;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FreeMotion<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.FreeMotionI.png" ALT="MultiBody.Joints.FreeMotion" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.FreeMotion"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.FreeMotion</H2>
+<B>Free motion joint (6 degrees-of-freedom, 12 potential states)</B><p>
+<IMG SRC="MultiBody.Joints.FreeMotionD.png" ALT="MultiBody.Joints.FreeMotion">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint which does not constrain the motion between frame_a and frame_b.
+Such a joint is only meaningful if the <b>relative</b> distance and orientation
+between frame_a and frame_b, and their derivatives, shall be used
+as <b>states</b>.
+</p>
+<p>
+Note, that <b>bodies</b> such as Parts.Body, Parts.BodyShape,
+have potential states describing the distance
+and orientation, and their derivatives, between the <b>world frame</b> and
+a <b>body fixed frame</b>.
+Therefore, if these potential state variables are suited,
+a FreeMotion joint is not needed.
+</p>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show arrow from frame_a to frame_b)</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>r_rel_a_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of r_rel_a (vector from origin of frame_a to origin of frame_b resolved in frame_a) [m]</TD></TR>
+<TR><TD>phi_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angles to rotate frame_a around x-, y-, z- axis into frame_b [deg]</TD></TR>
+<TR><TD>v_rel_a_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of velocity v_rel_a = der(r_rel_a) [m/s]</TD></TR>
+<TR><TD>w_rel_a_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular velocity of frame_b with respect to frame_a resolved in frame_a [deg/s]</TD></TR>
+<TR><TD>a_rel_a_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of acceleration a_rel_a = der(v_rel_a) [m/s2]</TD></TR>
+<TR><TD>z_rel_a_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular acceleration z_rel_a = der(w_rel_a) [deg/s2]</TD></TR>
+<TR><TD>arrowDiameter</TD><TD>world.defaultArrowDiameter</TD><TD> Diameter of arrow from frame_a to frame_b [m]</TD></TR>
+<TR><TD>arrowColor</TD><TD>Types.Defaults.SensorColor</TD><TD> Color of arrow</TD></TR>
+<TR><TD>enforceStates</TD><TD>true</TD><TD> = true, if generalized variables shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> FreeMotion <font color="darkgreen">
+  &quot;Free motion joint (6 degrees-of-freedom, 12 potential states)&quot;</font>
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>Modelica.Math.*;
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">import </font>Cv = Modelica.SIunits.Conversions;
+  <font color="darkgreen"></font>
+  <font color="blue">extends </font><A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.PartialElementaryJoint"
+>MultiBody.Interfaces.PartialElementaryJoint</A>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">
+    &quot;= true, if animation shall be enabled (show arrow from frame_a to frame_b)&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_Init.html#MultiBody.Types.Init.Temp"
+>Types.Init.Temp</A> initType=Types.Init.Free <font color="darkgreen">
+    &quot;|Initialization| Type of initialization (defines usage of start values below)&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>SI.Position r_rel_a_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization| Initial values of r_rel_a (vector from origin of frame_a to origin of frame_b resolved in frame_a)&quot;</font>;
+  <font color="blue">parameter </font>Cv.NonSIunits.Angle_deg phi_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization| Initial values of angles to rotate frame_a around x-, y-, z- axis into frame_b&quot;</font>;
+  <font color="blue">parameter </font>SI.Velocity v_rel_a_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization| Initial values of velocity v_rel_a = der(r_rel_a)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_rel_a_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization| Initial values of angular velocity of frame_b with respect to frame_a resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Acceleration a_rel_a_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization| Initial values of acceleration a_rel_a = der(v_rel_a)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> z_rel_a_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization| Initial values of angular acceleration z_rel_a = der(w_rel_a)&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>SI.Length arrowDiameter=world.defaultArrowDiameter <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of arrow from frame_a to frame_b&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> arrowColor=Types.Defaults.SensorColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of arrow&quot;</font>;
+  <font color="blue">parameter </font>Boolean enforceStates=true <font color="darkgreen">
+    &quot;|Advanced|| = true, if generalized variables shall be used as states&quot;</font>;
+  <font color="darkgreen"></font>
+  SI.Position r_rel_a[3](start=r_rel_a_start, stateSelect=<font color="blue">if </font>enforceStates<font color="blue">
+         then </font>StateSelect.always<font color="blue"> else </font>StateSelect.prefer) <font color="darkgreen">
+    &quot;Position vector from origin of frame_a to origin of frame_b, resolved in frame_a&quot;</font>;
+  SI.Velocity v_rel_a[3](stateSelect=<font color="blue">if </font>enforceStates<font color="blue"> then </font>StateSelect.always<font color="blue">
+         else </font>StateSelect.prefer) <font color="darkgreen">
+    &quot;= der(r_rel_a), i.e., velocity of origin of frame_b with respect to origin of frame_a, resolved in frame_a&quot;</font>;
+  SI.Angle phi[3](start=<font color="red">Cv.from_deg</font>(phi_start), stateSelect=<font color="blue">if </font>enforceStates<font color="blue">
+         then </font>StateSelect.always<font color="blue"> else </font>StateSelect.prefer) <font color="darkgreen">
+    &quot;Angles to rotate frame_a around x-, y-, z-axis into frame_b&quot;</font>;
+  SI.AngularVelocity w_rel_a[3](stateSelect=<font color="blue">if </font>enforceStates<font color="blue"> then </font>StateSelect.
+        always<font color="blue"> else </font>StateSelect.prefer) <font color="darkgreen">
+    &quot;Angular velocity of frame_b with respect to frame_a, resolved in frame_a: w_rel_a = vec( der(T_rel)'*T_rel )&quot;</font>;
+  SI.Acceleration a_rel_a[3] <font color="darkgreen">&quot;= der(v_rel_a)&quot;</font>;
+  SI.AngularAcceleration z_rel_a[3] <font color="darkgreen">&quot;= der(w_rel_a)&quot;</font>;
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">constant </font>Real c2_small=1.e-6 <font color="darkgreen">
+    &quot;If cos(phi[2]) &lt; c2_small, c2_small is used as guard against zero division&quot;</font>;
+  Real s1 <font color="darkgreen">&quot;= sin(phi[1])&quot;</font>;
+  Real s2 <font color="darkgreen">&quot;= sin(phi[2])&quot;</font>;
+  Real s3 <font color="darkgreen">&quot;= sin(phi[3])&quot;</font>;
+  Real c1 <font color="darkgreen">&quot;= cos(phi[1])&quot;</font>;
+  Real c2 <font color="darkgreen">&quot;= cos(phi[2])&quot;</font>;
+  Real c2a <font color="darkgreen">&quot;= cos(phi[2]) with guard against zero&quot;</font>;
+  Real c3 <font color="darkgreen">&quot;= cos(phi[3])&quot;</font>;
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Arrow"
+>Visualizers.Advanced.Arrow</A> arrow[ndim](
+    <font color="blue">each </font>r_head=r_rel_a,
+    <font color="blue">each </font>diameter=arrowDiameter,
+    <font color="blue">each </font>color=arrowColor,
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>Frames.Orientation</A> R_rel;
+  Real T_rel[3, 3];
+<font color="blue">initial </font><font color="blue">equation </font>
+  <font color="blue">if </font>initType == Types.Init.Position<font color="blue"> or </font>initType == Types.Init.PositionVelocity<font color="blue">
+       or </font>initType == Types.Init.PositionVelocityAcceleration<font color="blue"> then</font>
+    <font color="darkgreen">// Initialize positional variables</font>
+    r_rel_a = r_rel_a_start;
+    phi = <font color="red">Cv.from_deg</font>(phi_start);
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">if </font>initType == Types.Init.PositionVelocity<font color="blue"> or </font>initType == Types.Init.
+      PositionVelocityAcceleration<font color="blue"> or </font>initType == Types.Init.Velocity<font color="blue"> or </font>
+      initType == Types.Init.VelocityAcceleration<font color="blue"> then</font>
+    <font color="darkgreen">// Initialize velocity variables</font>
+    v_rel_a = v_rel_a_start;
+    w_rel_a = w_rel_a_start*Modelica.Constants.D2R;
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">if </font>initType == Types.Init.VelocityAcceleration<font color="blue"> or </font>initType == Types.Init.
+      PositionVelocityAcceleration<font color="blue"> then</font>
+    <font color="darkgreen">// Initialize acceleration variables</font>
+    a_rel_a = a_rel_a_start;
+    z_rel_a = z_rel_a_start*Modelica.Constants.D2R;
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">if </font>initType == Types.Init.SteadyState<font color="blue"> then</font>
+    v_rel_a = <font color="red">zeros</font>(3);
+    w_rel_a = <font color="red">zeros</font>(3);
+    a_rel_a = <font color="red">zeros</font>(3);
+    z_rel_a = <font color="red">zeros</font>(3);
+  <font color="blue">end if</font>;
+  <font color="darkgreen">/* Determine sines and cosines of the Cardan angles */</font>
+<font color="blue">equation </font>
+  s1 = <font color="red">sin</font>(phi[1]);
+  s2 = <font color="red">sin</font>(phi[2]);
+  s3 = <font color="red">sin</font>(phi[3]);
+  c1 = <font color="red">cos</font>(phi[1]);
+  c2 = <font color="red">cos</font>(phi[2]);
+  c3 = <font color="red">cos</font>(phi[3]);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* Below, an expression is divided by c2. When phi[2] = 90 deg, c2=0 and
+     a zero division occurs. To avoid this, c2 is set to a small value around
+     this singular point with the hope that the simulation will still work even if
+     there is a small jump in c2.
+  */</font>
+  c2a = <font color="red">noEvent</font>(<font color="blue">if </font>c2 &gt; c2_small<font color="blue"> or </font>c2 &lt; -c2_small<font color="blue"> then </font>c2<font color="blue"> else </font>(<font color="blue">if </font>c2 &gt;= 0<font color="blue">
+     then </font>c2_small<font color="blue"> else </font>-c2_small));
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* Relative transformation matrix from frame_a to frame_b
+       T_rel = [ c3, s3, 0;
+                -s3, c3, 0;
+                  0, 0, 1]*[c2, 0, -s2;
+                             0, 1, 0;
+                            s2, 0, c2]*[1, 0, 0;
+                                        0, c1, s1;
+                                        0, -s1, c1];
+  */</font>
+  T_rel = [c2*c3, c1*s3 + s1*s2*c3, s1*s3 - c1*s2*c3; -c2*s3, c1*c3 - s1*s2*s3,
+     s1*c3 + c1*s2*s3; s2, -s1*c2, c1*c2];
+  R_rel = <font color="red">Frames.from_T</font>(T_rel);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Kinematic differential equations for translational motion</font>
+  <font color="red">der</font>(r_rel_a) = v_rel_a;
+  <font color="red">der</font>(v_rel_a) = a_rel_a;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Kinematic differential equations for rotational motion</font>
+  <font color="red">der</font>(phi) = {w_rel_a[1] + (s1*w_rel_a[2] - c1*w_rel_a[3])*s2/c2a,c1*w_rel_a[2]
+     + s1*w_rel_a[3],(-s1*w_rel_a[2] + c1*w_rel_a[3])/c2a};
+  <font color="red">der</font>(w_rel_a) = z_rel_a;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Kinematic relationships</font>
+  frame_b.R = <font color="red">Frames.absoluteRotation</font>(frame_a.R, R_rel);
+  frame_b.r_0 = frame_a.r_0 + <font color="red">Frames.resolve1</font>(frame_a.R, r_rel_a);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Cut-forces and cut-torques are zero</font>
+  frame_a.f = <font color="red">zeros</font>(3);
+  frame_a.t = <font color="red">zeros</font>(3);
+  frame_b.f = <font color="red">zeros</font>(3);
+  frame_b.t = <font color="red">zeros</font>(3);
+<font color="blue">end </font>FreeMotion;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE SphericalSpherical<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.SphericalSphericalI.png" ALT="MultiBody.Joints.SphericalSpherical" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.SphericalSpherical"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.SphericalSpherical</H2>
+<B>Spherical - spherical joint aggregation (1 constraint, no potential states) with an optional point mass in the middle</B><p>
+<IMG SRC="MultiBody.Joints.SphericalSphericalD.png" ALT="MultiBody.Joints.SphericalSpherical">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Joint that has a spherical joint on each of its two ends.
+The rod connecting the two spherical joints is approximated by a
+point mass that is located in the middle of the rod. When the mass
+is set to zero (default), special code for a massless body is generated.
+In the following default animation figure, the two spherical joints are
+represented by two red spheres, the connecting rod by a grey cylinder
+and the point mass in the middle of the rod by a light blue sphere:
+</p>
+<p align="center">
+<IMG SRC="../Images/Joints/SphericalSpherical.png" ALT="model Joints.SphericalSpherical">
+</p>
+This joint introduces <b>one constraint</b> defining that the distance between
+the origin of frame_a and the origin of frame_b is constant (= rodLength).
+It is highly recommended to use this joint in loops
+whenever possible, because this enhances the efficiency
+considerably due to smaller systems of non-linear algebraic
+equations.
+</p>
+<p>
+It is sometimes desirable to <b>compute</b> the <b>rodLength</b>
+of the connecting rod during initialization. For this, parameter
+<b>computeLength</b> has to be set to <b>true</b> and instead <b>one</b> other,
+easier to determine, position variable in the same loop
+needs to have a fixed attribute of <b>true</b>. For example,
+if a loop consists of one Revolute joint, one Prismatic joint and
+a SphericalSpherical joint, one may fix the start values of the revolute
+joint angle and of the relative distance of the prismatic joint
+in order to compute the rodLength of the rod.
+</p>
+<p>
+It is not possible to connect other components, such as a body with mass
+properties or a special visual shape object to the rod connecting
+the two spherical joints. If this is needed, use instead joint Joints.<b>UniversalSpherical</b>
+that has this property.
+</p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>showMass</TD><TD>true</TD><TD>= true, if mass shall be shown (provided animation = true and m &gt; 0)</TD></TR>
+<TR><TD>computeRodLength</TD><TD>false</TD><TD>= true, if rodLength shall be computed during initialization (see info)</TD></TR>
+<TR><TD>rodLength</TD><TD>1</TD><TD>Distance between the origins of frame_a and frame_b (if computeRodLength=true, guess value) [m]</TD></TR>
+<TR><TD>m</TD><TD>0</TD><TD>Mass of rod (= point mass located in middle of rod) [kg]</TD></TR>
+<TR><TD>sphereDiameter</TD><TD>world.defaultJointLength</TD><TD> Diameter of spheres respresenting the spherical joints</TD></TR>
+<TR><TD>sphereColor</TD><TD>MultiBody.Types.Defaults.JointColor</TD><TD> Color of spheres respresenting the spherical joints</TD></TR>
+<TR><TD>rodDiameter</TD><TD>sphereDiameter/MultiBody.Types.Defaults.JointRodDiameterFraction</TD><TD> Diameter of rod connecting the two spherical joint</TD></TR>
+<TR><TD>rodColor</TD><TD>MultiBody.Types.Defaults.RodColor</TD><TD> Color of rod connecting the two spherical joints</TD></TR>
+<TR><TD>massDiameter</TD><TD>sphereDiameter</TD><TD> Diameter of sphere representing the mass point</TD></TR>
+<TR><TD>massColor</TD><TD>MultiBody.Types.Defaults.BodyColor</TD><TD> Color of sphere representing the mass point</TD></TR>
+<TR><TD>kinematicConstraint</TD><TD>true</TD><TD> = false, if no constraint shall be defined, due to analytically solving a kinematic loop</TD></TR>
+<TR><TD>checkTotalPower</TD><TD>false</TD><TD> = true, if total power flowing into this component shall be determined (must be zero)</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> SphericalSpherical <font color="darkgreen">
+  &quot;Spherical - spherical joint aggregation (1 constraint, no potential states) with an optional point mass in the middle&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">extends </font><A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.PartialTwoFrames"
+>Interfaces.PartialTwoFrames</A>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font>Boolean showMass=true <font color="darkgreen">
+    &quot;= true, if mass shall be shown (provided animation = true and m &gt; 0)&quot;</font>;
+  <font color="blue">parameter </font>Boolean computeRodLength=false <font color="darkgreen">
+    &quot;= true, if rodLength shall be computed during initialization (see info)&quot;</font>;
+  <font color="blue">parameter </font>SI.Length rodLength(
+    min=Modelica.Constants.eps,
+    fixed=<font color="blue">not </font>computeRodLength) = 1 <font color="darkgreen">
+    &quot;Distance between the origins of frame_a and frame_b (if computeRodLength=true, guess value)&quot;</font>;
+  <font color="blue">parameter </font>SI.Mass m=0 <font color="darkgreen">&quot;Mass of rod (= point mass located in middle of rod)&quot;</font>;
+  <font color="blue">parameter </font>Real sphereDiameter=world.defaultJointLength <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of spheres respresenting the spherical joints&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> sphereColor=MultiBody.Types.Defaults.JointColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of spheres respresenting the spherical joints&quot;</font>;
+  <font color="blue">parameter </font>Real rodDiameter=sphereDiameter/MultiBody.Types.Defaults.
+      JointRodDiameterFraction <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of rod connecting the two spherical joint&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> rodColor=MultiBody.Types.Defaults.RodColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of rod connecting the two spherical joints&quot;</font>;
+  <font color="blue">parameter </font>Real massDiameter=sphereDiameter <font color="darkgreen">
+    &quot;|Animation|if animation = true and showMass = true and m &gt; 0| Diameter of sphere representing the mass point&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> massColor=MultiBody.Types.Defaults.BodyColor <font color="darkgreen">
+    &quot;|Animation|if animation = true and showMass = true and m &gt; 0| Color of sphere representing the mass point&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean kinematicConstraint=true <font color="darkgreen">
+    &quot;|Advanced|| = false, if no constraint shall be defined, due to analytically solving a kinematic loop&quot;</font>;
+  <font color="blue">parameter </font>Boolean checkTotalPower=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if total power flowing into this component shall be determined (must be zero)&quot;</font>;
+  <A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>Frames.Orientation</A> R_rel <font color="darkgreen">
+    &quot;Relative orientation object to rotate from frame_a to frame_b&quot;</font>;
+  <font color="darkgreen"></font>
+  SI.Force f_rod <font color="darkgreen">
+    &quot;Constraint force in direction of the rod (positive on frame_a, when directed from frame_a to frame_b)&quot;</font>;
+  SI.Position rRod_0[3] <font color="darkgreen">
+    &quot;Position vector from frame_a to frame_b resolved in world frame&quot;</font>;
+  SI.Position rRod_a[3] <font color="darkgreen">
+    &quot;Position vector from frame_a to frame_b resolved in frame_a&quot;</font>;
+  SI.Position eRod_a[3] <font color="darkgreen">
+    &quot;Unit vector in direction from frame_a to frame_b, resolved in frame_a&quot;</font>;
+  SI.Position r_CM_0[3] <font color="darkgreen">
+    &quot;Dummy if m==0, or position vector from world frame to mid-point of rod, resolved in world frame&quot;</font>;
+  SI.Velocity v_CM_0[3] <font color="darkgreen">&quot;First derivative of r_CM_0&quot;</font>;
+  SI.Force f_CM_a[3] <font color="darkgreen">
+    &quot;Dummy if m==0, or inertial force acting at mid-point of rod due to mass oint acceleration, resolved in frame_a&quot;</font>;
+  SI.Force f_CM_e[3] <font color="darkgreen">
+    &quot;Dummy if m==0, or projection of f_CM_a onto eRod_a, resolved in frame_a&quot;</font>;
+  SI.Force f_b_a1[3] <font color="darkgreen">
+    &quot;Force acting at frame_b, but without force in rod, resolved in frame_a&quot;</font>;
+  SI.Power totalPower <font color="darkgreen">
+    &quot;Total power flowing into this element, if checkTotalPower=true (otherwise dummy)&quot;</font>;
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <font color="blue">parameter </font>Integer ndim2=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> and </font>showMass<font color="blue">
+       and </font>m &gt; 0<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> shape_rod[ndim](
+    <font color="blue">each </font>shapeType=&quot;cylinder&quot;,
+    <font color="blue">each </font>color=rodColor,
+    <font color="blue">each </font>length=rodLength,
+    <font color="blue">each </font>width=rodDiameter,
+    <font color="blue">each </font>height=rodDiameter,
+    <font color="blue">each </font>lengthDirection=eRod_a,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> shape_a[ndim](
+    <font color="blue">each </font>shapeType=&quot;sphere&quot;,
+    <font color="blue">each </font>color=sphereColor,
+    <font color="blue">each </font>length=sphereDiameter,
+    <font color="blue">each </font>width=sphereDiameter,
+    <font color="blue">each </font>height=sphereDiameter,
+    <font color="blue">each </font>lengthDirection=eRod_a,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape=-eRod_a*(sphereDiameter/2),
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> shape_b[ndim](
+    <font color="blue">each </font>shapeType=&quot;sphere&quot;,
+    <font color="blue">each </font>color=sphereColor,
+    <font color="blue">each </font>length=sphereDiameter,
+    <font color="blue">each </font>width=sphereDiameter,
+    <font color="blue">each </font>height=sphereDiameter,
+    <font color="blue">each </font>lengthDirection=eRod_a,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape=eRod_a*(rodLength - sphereDiameter/2),
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> shape_mass[ndim2](
+    <font color="blue">each </font>shapeType=&quot;sphere&quot;,
+    <font color="blue">each </font>color=massColor,
+    <font color="blue">each </font>length=massDiameter,
+    <font color="blue">each </font>width=massDiameter,
+    <font color="blue">each </font>height=massDiameter,
+    <font color="blue">each </font>lengthDirection=eRod_a,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape=eRod_a*(rodLength/2 - sphereDiameter/2),
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+<font color="blue">equation </font>
+  <font color="darkgreen">// Determine relative position vector between the two frames</font>
+  rRod_0 = frame_b.r_0 - frame_a.r_0;
+  rRod_a = <font color="red">Frames.resolve2</font>(frame_a.R, rRod_0);
+  eRod_a = rRod_a/rodLength;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* Constraint equation is removed, when taken into account somewhere else,
+     e.g., when analytically solving a kinematic loop
+  */</font>
+  <font color="blue">if </font>kinematicConstraint<font color="blue"> then</font>
+    0 = rRod_0*rRod_0 - rodLength*rodLength;
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Cut-torques at frame_a and frame_b</font>
+  frame_a.t = <font color="red">zeros</font>(3);
+  frame_b.t = <font color="red">zeros</font>(3);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* Force and torque balance of rod
+     - Kinematics for center of mass CM of mass point
+       r_CM_0 = frame_a.r_0 + rRod_0/2;
+       v_CM_0 = der(r_CM_0);
+       a_CM_a = resolve2(frame_a.R, der(v_CM_0) - world.gravityAcceleration(r_CM_0));
+     - Inertial and gravity force in direction (f_CM_e) and orthogonal (f_CM_n) to rod
+       f_CM_a = m*a_CM_a
+       f_CM_e = f_CM_a*eRod_a;           // in direction of rod
+       f_CM_n = rodLength(f_CM_a - f_CM_e);  // orthogonal to rod
+     - Force balance in direction of rod
+       f_CM_e = fa_rod_e + fb_rod_e;
+     - Force balance orthogonal to rod
+       f_CM_n = fa_rod_n + fb_rod_n;
+     - Torque balance with respect to frame_a
+       0 = (-f_CM_n)*rodLength/2 + fb_rod_n*rodLength
+     The result is:
+     fb_rod_n = f_CM_n/2;
+     fa_rod_n = fb_rod_n;
+     fb_rod_e = f_CM_e - fa_rod_e;
+     fa_rod_e is the unknown computed from loop
+  */</font>
+  <font color="darkgreen"></font>
+  <font color="darkgreen">
+    // f_b_a1 is needed in aggregation joints to solve kinematic loops analytically</font>
+  R_rel = <font color="red">Frames.relativeRotation</font>(frame_a.R, frame_b.R);
+  <font color="blue">if </font>m &gt; 0<font color="blue"> then</font>
+    r_CM_0 = frame_a.r_0 + rRod_0/2;
+    v_CM_0 = <font color="red">der</font>(r_CM_0);
+    f_CM_a = m*<font color="red">Frames.resolve2</font>(frame_a.R, <font color="red">der</font>(v_CM_0) - <font color="red">
+      world.gravityAcceleration</font>(r_CM_0));
+    f_CM_e = (f_CM_a*eRod_a)*eRod_a;
+    frame_a.f = (f_CM_a - f_CM_e)/2 + f_rod*eRod_a;
+    f_b_a1 = (f_CM_a + f_CM_e)/2;
+    frame_b.f = <font color="red">Frames.resolve2</font>(R_rel, f_b_a1 - f_rod*eRod_a);
+  <font color="blue">else</font>
+    r_CM_0 = <font color="red">zeros</font>(3);
+    v_CM_0 = <font color="red">zeros</font>(3);
+    f_CM_a = <font color="red">zeros</font>(3);
+    f_CM_e = <font color="red">zeros</font>(3);
+    f_b_a1 = <font color="red">zeros</font>(3);
+    frame_a.f = f_rod*eRod_a;
+    frame_b.f = -<font color="red">Frames.resolve2</font>(R_rel, frame_a.f);
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">if </font>checkTotalPower<font color="blue"> then</font>
+    totalPower = frame_a.f*<font color="red">Frames.resolve2</font>(frame_a.R, <font color="red">der</font>(frame_a.r_0)) +
+      frame_b.f*<font color="red">Frames.resolve2</font>(frame_b.R, <font color="red">der</font>(frame_b.r_0)) + (-m)*(<font color="red">der</font>(v_CM_0)
+       - <font color="red">world.gravityAcceleration</font>(r_CM_0))*v_CM_0 + frame_a.t*<font color="red">
+      Frames.angularVelocity2</font>(frame_a.R, <font color="red">der</font>(frame_a.R)) + frame_b.t*<font color="red">
+      Frames.angularVelocity2</font>(frame_b.R, <font color="red">der</font>(frame_b.R));
+  <font color="blue">else</font>
+    totalPower = 0;
+  <font color="blue">end if</font>;
+<font color="blue">end </font>SphericalSpherical;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE UniversalSpherical<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Joints.UniversalSphericalI.png" ALT="MultiBody.Joints.UniversalSpherical" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Joints.UniversalSpherical"></A><A HREF="MultiBody_Joints.html#MultiBody.Joints"
+>MultiBody.Joints</A>.UniversalSpherical</H2>
+<B>Universal - spherical joint aggregation (1 constraint, no potential states)</B><p>
+<IMG SRC="MultiBody.Joints.UniversalSphericalD.png" ALT="MultiBody.Joints.UniversalSpherical">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+This component consists of a <b>universal joint</b> at frame_a and
+a <b>spherical joint</b> at frame_b that are connected together with
+a <b>rigid rod</b>, see default aimation figure (the arrows are not
+part of the default animation):
+</p>
+<p align="center">
+<IMG SRC="../Images/Joints/UniversalSpherical.png" ALT="model Joints.UniversalSpherical">
+</p>
+<p>
+This joint aggregation has no mass and no inertia and introduces the constraint
+that the distance between the origin of frame_a and the origin of frame_b is constant
+(= Frames.length(rRod_ia)). The universal joint is defined in the following way:
+<p>
+<ul>
+<li> The rotation <b>axis</b> of revolute joint <b>1</b> is along parameter
+     vector n1_a which is fixed in frame_a.<li>
+<li> The rotation <b>axis</b> of revolute joint <b>2</b> is perpendicular to
+     axis 1 and to the line connecting the universal and the spherical joint.
+</ul>
+<p>
+The definition of axis 2 of the universal joint is performed according
+to the most often occuring case. In a future release, axis 2 might
+be explicitly definable via a parameter. However, the treatment is much more
+complicated and the number of operations is considerably higher,
+if axis 2 is not orthogonal to axis 1 and to the connecting rod.
+</p>
+<p>
+Note, there is a <b>singularity</b> when axis 1 and the connecting rod are parallel
+to each other. Therefore, if possible n1_a should be selected in such a way that it
+is perpendicular to rRod_ia in the initial configuration (i.e., the
+distance to the singularity is as large as possible).
+</p>
+<p>
+An additional <b>frame_ia</b> is present. It is <b>fixed</b> in the connecting
+<b>rod</b> at the origin of <b>frame_a</b>. The placement of frame_ia on the rod
+is implicitly defined by the universal joint (frame_a and frame_ia coincide
+when the angles of the two revolute joints of the universal joint are zero)
+and by parameter vector <b>rRod_ia</b>, the position vector
+from the origin of frame_a to the origin of frame_b, resolved in frame_<b>ia</b>.
+</p>
+<p>
+The easiest way to define the parameters of this joint is by moving the
+MultiBody system in a <b>reference configuration</b> where <b>all frames</b>
+of all components are <b>parallel</b> to each other (alternatively,
+at least frame_a and frame_ia of the UniversalSpherical joint
+should be parallel to each other when defining an instance of this
+component). Since frame_a and frame_ia are parallel to each other,
+vector <b>rRod_ia</b> from frame_a to frame_b resolved in frame_<b>ia</b> can be resolved
+in frame_<b>a</b> (or the <b>world frame</b>, if all frames are parallel to each other).
+</p>
+<p>
+This joint aggregation can be used in cases where
+in reality a rod with spherical joints at each end are present.
+Such a system has an additional degree of freedom to rotate
+the rod along its axis. In practice this rotation is usually
+of no interested and is mathematically removed by replacing one
+of the spherical joints by a universal joint. Still, in most
+cases the Joints.SphericalSpherical joint aggregation can be used instead
+of the UniversalSpherical joint
+since the rod is animated and its mass properties are approximated by
+a point mass in the middle of the rod. The SphericalSpherical joint
+has the advantage that it does not have a singular configuration.
+</p>
+<p>
+In the public interface of the UniversalSpherical joint, the following
+(final) <b>parameters</b> are provided:
+</p>
+<pre>
+  <b>parameter</b> Real rodLength(unit="m")  "Length of rod";
+  <b>parameter</b> Real eRod_ia[3] "Unit vector along rod, resolved in frame_ia";
+  <b>parameter</b> Real e2_ia  [3] "Unit vector along axis 2, resolved in frame_ia";
+</pre>
+<p>
+This allows a more convenient definition of data which is related to the rod.
+For example, if a box shall be connected at frame_ia directing from
+the origin of frame_a to the middle of the rod, this might be defined as:
+</p>
+<pre>
+    MultiBody.Joints.UniversalSpherical jointUS(rRod_ia={1.2, 1, 0.2});
+    MultiBody.Visualizers.FixedShape    shape(shapeType       = "box",
+                                              lengthDirection = jointUS.eRod_ia,
+                                              widthDirection  = jointUS.e2_ia,
+                                              length          = jointUS.rodLength/2,
+                                              width           = jointUS.rodLength/10);
+  <b>equation</b>
+    <b>connect</b>(jointUS.frame_ia, shape.frame_a);
+</pre>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>showUniversalAxes</TD><TD>true</TD><TD> = true, if universal joint shall be visualized with two cylinders, otherwise with a sphere (provided animation=true)</TD></TR>
+<TR><TD>computeRodLength</TD><TD>false</TD><TD>= true, if distance between frame_a and frame_b shall be computed during initialization (see info)</TD></TR>
+<TR><TD>n1_a</TD><TD>{0,0,1}</TD><TD>Axis 1 of universal joint resolved in frame_a (axis 2 is orthogonal to axis 1 and to rod)</TD></TR>
+<TR><TD>rRod_ia[3]</TD><TD>{1,0,0}</TD><TD>Vector from origin of frame_a to origin of frame_b, resolved in frame_ia (if computeRodLength=true, rRod_ia is only an axis vector along the connecting rod) [m]</TD></TR>
+<TR><TD>sphereDiameter</TD><TD>world.defaultJointLength</TD><TD> Diameter of spheres representing the universal and the spherical joint [m]</TD></TR>
+<TR><TD>sphereColor</TD><TD>MultiBody.Types.Defaults.JointColor</TD><TD> Color of spheres representing the universal and the spherical joint</TD></TR>
+<TR><TD>rodShapeType</TD><TD>&quot;cylinder&quot;</TD><TD> Shape type of rod connecting the universal and the spherical joint</TD></TR>
+<TR><TD>rodWidth</TD><TD>sphereDiameter/MultiBody.Types.Defaults.JointRodDiameterFraction</TD><TD> Width of rod shape in direction of axis 2 of universal joint. [m]</TD></TR>
+<TR><TD>rodHeight</TD><TD>rodWidth</TD><TD> Height of rod shape in direction that is orthogonal to rod and to axis 2. [m]</TD></TR>
+<TR><TD>rodExtra</TD><TD>0.0</TD><TD> Additional parameter depending on rodShapeType (see docu of Visualizers.FixedShape).</TD></TR>
+<TR><TD>rodColor</TD><TD>MultiBody.Types.Defaults.RodColor</TD><TD> Color of rod shape connecting the universal and the spherical joints</TD></TR>
+<TR><TD>cylinderLength</TD><TD>world.defaultJointLength</TD><TD> Length of cylinders representing the two universal joint axes [m]</TD></TR>
+<TR><TD>cylinderDiameter</TD><TD>world.defaultJointWidth</TD><TD> Diameter of cylinders representing the two universal joint axes [m]</TD></TR>
+<TR><TD>cylinderColor</TD><TD>Types.Defaults.JointColor</TD><TD> Color of cylinders representing the two universal joint axes</TD></TR>
+<TR><TD>kinematicConstraint</TD><TD>true</TD><TD> = false, if no constraint shall be defined, due to analytically solving a kinematic loop</TD></TR>
+<TR><TD>checkTotalPower</TD><TD>false</TD><TD> = true, if total power flowing into this component shall be determined (must be zero)</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> UniversalSpherical <font color="darkgreen">
+  &quot;Universal - spherical joint aggregation (1 constraint, no potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">extends </font><A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.PartialTwoFrames"
+>Interfaces.PartialTwoFrames</A>;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>Interfaces.Frame_a</A> frame_ia;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font>Boolean showUniversalAxes=true <font color="darkgreen">
+    &quot; = true, if universal joint shall be visualized with two cylinders, otherwise with a sphere (provided animation=true)&quot;</font>;
+  <font color="blue">parameter </font>Boolean computeRodLength=false <font color="darkgreen">
+    &quot;= true, if distance between frame_a and frame_b shall be computed during initialization (see info)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n1_a={0,0,1} <font color="darkgreen">
+    &quot;Axis 1 of universal joint resolved in frame_a (axis 2 is orthogonal to axis 1 and to rod)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position rRod_ia[3]={1,0,0} <font color="darkgreen">
+    &quot;Vector from origin of frame_a to origin of frame_b, resolved in frame_ia (if computeRodLength=true, rRod_ia is only an axis vector along the connecting rod)&quot;</font>;
+  <font color="blue">parameter </font>SI.Diameter sphereDiameter=world.defaultJointLength <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of spheres representing the universal and the spherical joint&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> sphereColor=MultiBody.Types.Defaults.JointColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of spheres representing the universal and the spherical joint&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.ShapeType"
+>MultiBody.Types.ShapeType</A> rodShapeType=&quot;cylinder&quot; <font color="darkgreen">
+    &quot;|Animation|if animation = true| Shape type of rod connecting the universal and the spherical joint&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance rodWidth=sphereDiameter/MultiBody.Types.Defaults.
+      JointRodDiameterFraction <font color="darkgreen">
+    &quot;|Animation|if animation = true| Width of rod shape in direction of axis 2 of universal joint.&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance rodHeight=rodWidth <font color="darkgreen">
+    &quot;|Animation|if animation = true| Height of rod shape in direction that is orthogonal to rod and to axis 2.&quot;</font>;
+  <font color="blue">parameter </font>Real rodExtra=0.0 <font color="darkgreen">
+    &quot;|Animation|if animation = true| Additional parameter depending on rodShapeType (see docu of Visualizers.FixedShape).&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> rodColor=MultiBody.Types.Defaults.RodColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of rod shape connecting the universal and the spherical joints&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance cylinderLength=world.defaultJointLength <font color="darkgreen">
+    &quot;|Animation|if animation = true and showUniversalAxes| Length of cylinders representing the two universal joint axes&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance cylinderDiameter=world.defaultJointWidth <font color="darkgreen">
+    &quot;|Animation|if animation = true and showUniversalAxes| Diameter of cylinders representing the two universal joint axes&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> cylinderColor=Types.Defaults.JointColor <font color="darkgreen">
+    &quot;|Animation|if animation = true and showUniversalAxes| Color of cylinders representing the two universal joint axes&quot;</font>;
+  <font color="blue">parameter </font>Boolean kinematicConstraint=true <font color="darkgreen">
+    &quot;|Advanced|| = false, if no constraint shall be defined, due to analytically solving a kinematic loop&quot;</font>;
+  <font color="blue">parameter </font>Boolean checkTotalPower=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if total power flowing into this component shall be determined (must be zero)&quot;</font>;
+  <A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>Frames.Orientation</A> R_rel <font color="darkgreen">
+    &quot;Relative orientation object to rotate from frame_a to frame_b&quot;</font>;
+  SI.Force f_rod <font color="darkgreen">
+    &quot;Constraint force in direction of the rod (positive, if rod is pressed)&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Distance rodLength(fixed=<font color="blue">not </font>computeRodLength) = <font color="red">
+    Frames.length</font>(rRod_ia) <font color="darkgreen">
+    &quot;Length of rod (distance between origin of frame_a and origin of frame_b)&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>Real eRod_ia[3]=<font color="red">Frames.normalize</font>(rRod_ia) <font color="darkgreen">
+    &quot;Unit vector from origin of frame_a to origin of frame_b, resolved in frame_ia&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>Real e2_ia[3]=<font color="red">Frames.normalize</font>(<font color="red">cross</font>(n1_a, eRod_ia)) <font color="darkgreen">
+    &quot;Unit vector in direction of axis 2 of universal joint, resolved in frame_ia (orthogonal to n1_a and eRod_ia)a&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>Real e3_ia[3]=<font color="red">cross</font>(eRod_ia, e2_ia) <font color="darkgreen">
+    &quot;Unit vector perpendicular to eRod_ia and e2_ia, resolved in frame_ia&quot;</font>;
+  SI.Power totalPower <font color="darkgreen">
+    &quot;Total power flowing into this element, if checkTotalPower=true (otherwise dummy)&quot;</font>;
+  SI.Force f_b_a1[3] <font color="darkgreen">
+    &quot;frame_b.f without f_rod part, resolved in frame_a (needed for analytic loop handling)&quot;</font>;
+  Real eRod_a[3] <font color="darkgreen">
+    &quot;Unit vector in direction of rRod_a, resolved in frame_a (needed for analytic loop handling)&quot;</font>;
+  SI.Position rRod_0[3](start=rRod_ia) <font color="darkgreen">
+    &quot;Position vector from origin of frame_a to origin of frame_b resolved in world frame&quot;</font>;
+  SI.Position rRod_a[3](start=rRod_ia) <font color="darkgreen">
+    &quot;Position vector from origin of frame_a to origin of frame_b resolved in frame_a&quot;</font>;
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  SI.Force f_b_a[3] <font color="darkgreen">&quot;frame_b.f resolved in frame_a&quot;</font>;
+  SI.Force f_ia_a[3] <font color="darkgreen">&quot;frame_ia.f resolved in frame_a&quot;</font>;
+  SI.Torque t_ia_a[3] <font color="darkgreen">&quot;frame_ia.t resolved in frame_a&quot;</font>;
+  Real n2_a[3] <font color="darkgreen">
+    &quot;Vector in direction of axis 2 of the universal joint (e2_ia), resolved in frame_a&quot;</font>;
+  Real length2_n2_a(unit=&quot;m2&quot;) <font color="darkgreen">&quot;Square of length of vector n2_a&quot;</font>;
+  Real e2_a[3] <font color="darkgreen">
+    &quot;Unit vector in direction of axis 2 of the universal joint (e2_ia), resolved in frame_a&quot;</font>;
+  Real e3_a[3] <font color="darkgreen">
+    &quot;Unit vector perpendicular to eRod_ia and e2_a, resolved in frame_a&quot;</font>;
+  Real T_rel_ia[3, 3];
+  <A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>Frames.Orientation</A> R_rel_ia <font color="darkgreen">&quot;Rotation from frame_a to frame_ia&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <font color="blue">parameter </font>Integer ndim1=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> and </font><font color="blue">not </font>
+      showUniversalAxes<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <font color="blue">parameter </font>Integer ndim2=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> and </font>
+      showUniversalAxes<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> rodShape[ndim](
+    <font color="blue">each </font>shapeType=rodShapeType,
+    <font color="blue">each </font>color=rodColor,
+    <font color="blue">each </font>length=rodLength,
+    <font color="blue">each </font>width=rodWidth,
+    <font color="blue">each </font>height=rodHeight,
+    <font color="blue">each </font>lengthDirection=eRod_ia,
+    <font color="blue">each </font>widthDirection=e2_ia,
+    <font color="blue">each </font>r=frame_ia.r_0,
+    <font color="blue">each </font>R=frame_ia.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> sphericalShape_b[ndim](
+    <font color="blue">each </font>shapeType=&quot;sphere&quot;,
+    <font color="blue">each </font>color=sphereColor,
+    <font color="blue">each </font>length=sphereDiameter,
+    <font color="blue">each </font>width=sphereDiameter,
+    <font color="blue">each </font>height=sphereDiameter,
+    <font color="blue">each </font>lengthDirection={1,0,0},
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape={-0.5,0,0}*sphereDiameter,
+    <font color="blue">each </font>r=frame_b.r_0,
+    <font color="blue">each </font>R=frame_b.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> sphericalShape_a[ndim1](
+    <font color="blue">each </font>shapeType=&quot;sphere&quot;,
+    <font color="blue">each </font>color=sphereColor,
+    <font color="blue">each </font>length=sphereDiameter,
+    <font color="blue">each </font>width=sphereDiameter,
+    <font color="blue">each </font>height=sphereDiameter,
+    <font color="blue">each </font>lengthDirection={1,0,0},
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape={-0.5,0,0}*sphereDiameter,
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> universalShape1[ndim2](
+    <font color="blue">each </font>shapeType=&quot;cylinder&quot;,
+    <font color="blue">each </font>color=cylinderColor,
+    <font color="blue">each </font>length=cylinderLength,
+    <font color="blue">each </font>width=cylinderDiameter,
+    <font color="blue">each </font>height=cylinderDiameter,
+    <font color="blue">each </font>lengthDirection=n1_a,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape=-n1_a*(cylinderLength/2),
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> universalShape2[ndim2](
+    <font color="blue">each </font>shapeType=&quot;cylinder&quot;,
+    <font color="blue">each </font>color=cylinderColor,
+    <font color="blue">each </font>length=cylinderLength,
+    <font color="blue">each </font>width=cylinderDiameter,
+    <font color="blue">each </font>height=cylinderDiameter,
+    <font color="blue">each </font>lengthDirection=e2_ia,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape=-e2_ia*(cylinderLength/2),
+    <font color="blue">each </font>r=frame_ia.r_0,
+    <font color="blue">each </font>R=frame_ia.R);
+<font color="blue">equation </font>
+  <font color="darkgreen"></font>
+  <font color="red">defineBranch</font>(frame_a.R, frame_ia.R);
+  <font color="darkgreen"></font>
+  rRod_0 = frame_b.r_0 - frame_a.r_0;
+  rRod_a = <font color="red">Frames.resolve2</font>(frame_a.R, rRod_0);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Constraint equation</font>
+  <font color="blue">if </font>kinematicConstraint<font color="blue"> then</font>
+    0 = rRod_0*rRod_0 - rodLength*rodLength;
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* Determine relative Rotation R_rel_ia from frame_a to frame_ia
+     and absolute rotation of frame_a.R.
+  */</font>
+  eRod_a = rRod_a/rodLength;
+  n2_a = <font color="red">cross</font>(n1_a, eRod_a);
+  length2_n2_a = n2_a*n2_a;
+  <font color="red">assert</font>(<font color="red">noEvent</font>(length2_n2_a &gt; 1.e-10), &quot;
+A MultiBody.Joints.UniversalSpherical joint (consisting of
+a universal joint and a spherical joint connected together
+by a rigid rod) is in the singular configuration of the
+universal joint. This means that axis 1 of the universal
+joint defined via parameter \&quot;n1_a\&quot; is parallel to vector
+\&quot;rRod_ia\&quot; that is directed from the origin of frame_a to the
+origin of frame_b.
+   You may try to use another \&quot;n1_a\&quot; vector. If this fails,
+use instead MultiBody.Joints.SphericalSpherical, if this is
+possible, because this joint aggregation does not have a
+singular configuration.
+&quot;);
+  e2_a = n2_a/<font color="red">sqrt</font>(length2_n2_a);
+  e3_a = <font color="red">cross</font>(eRod_a, e2_a);
+  T_rel_ia = [eRod_ia, e2_ia, e3_ia]*<font color="red">transpose</font>([eRod_a, e2_a, e3_a]);
+  R_rel_ia = <font color="red">Frames.from_T</font>(T_rel_ia);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Compute kinematic quantities of frame_ia</font>
+  frame_ia.r_0 = frame_a.r_0;
+  frame_ia.R = <font color="red">Frames.absoluteRotation</font>(frame_a.R, R_rel_ia);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* In the following formulas f_a, f_b, f_ia, t_a, t_b, t_ia are
+     the forces and torques at frame_a, frame_b, frame_ia, respectively,
+     resolved in frame_a. e_x, e_y, e_z are the unit vectors resolved in frame_a.
+     Torque balance at the rod around the origin of frame_a:
+       0 = t_a + t_ia + cross(rRod_a, f_b)
+     with
+         rRod_a = rodLength*e_x
+         f_b     = -f_rod*e_x + f_b[2]*e_y + f_b[3]*e_z
+     follows:
+       0 = t_a + t_ia + rodLength*(f_b[2]*e_z - f_b[3]*e_y)
+     The projection of t_a with respect to universal joint axes vanishes:
+       n1_a*t_a = 0
+       e_y*t_a = 0
+     Therefore:
+        0 = n1_a*t_ia + rodLength*f_b[2]*(n1_a*e_z)
+        0 = e_y*t_ia - rodLength*f_b[3]
+     or
+        f_b = -f_rod*e_x - e_y*(n1_a*t_ia)/(rodLength*(n1_a*e_z)) + e_z*(e_y*t_ia)/rodLength
+     Force balance:
+        0 = f_a + f_b + f_ia
+  */</font>
+  R_rel = <font color="red">Frames.relativeRotation</font>(frame_a.R, frame_b.R);
+  [f_ia_a, t_ia_a] = <font color="red">Frames.multipleResolve1</font>(R_rel_ia, [frame_ia.f, frame_ia.t]);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">
+    // f_b_a1 is needed in aggregation joints to solve kinematic loops analytically</font>
+  f_b_a1 = -e2_a*((n1_a*t_ia_a)/(rodLength*(n1_a*e3_a))) + e3_a*((e2_a*t_ia_a)/
+    rodLength);
+  f_b_a = -f_rod*eRod_a + f_b_a1;
+  frame_b.f = <font color="red">Frames.resolve2</font>(R_rel, f_b_a);
+  frame_b.t = <font color="red">zeros</font>(3);
+  <font color="red">zeros</font>(3) = frame_a.f + f_b_a + f_ia_a;
+  <font color="red">zeros</font>(3) = frame_a.t + t_ia_a + <font color="red">cross</font>(rRod_a, f_b_a);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Measure power for test purposes</font>
+  <font color="blue">if </font>checkTotalPower<font color="blue"> then</font>
+    totalPower = frame_a.f*<font color="red">Frames.resolve2</font>(frame_a.R, <font color="red">der</font>(frame_a.r_0)) +
+      frame_b.f*<font color="red">Frames.resolve2</font>(frame_b.R, <font color="red">der</font>(frame_b.r_0)) + frame_ia.f*<font color="red">
+      Frames.resolve2</font>(frame_ia.R, <font color="red">der</font>(frame_ia.r_0)) + frame_a.t*<font color="red">
+      Frames.angularVelocity2</font>(frame_a.R, <font color="red">der</font>(frame_a.R)) + frame_b.t*<font color="red">
+      Frames.angularVelocity2</font>(frame_b.R, <font color="red">der</font>(frame_b.R)) + frame_ia.t*<font color="red">
+      Frames.angularVelocity2</font>(frame_ia.R, <font color="red">der</font>(frame_ia.R));
+  <font color="blue">else</font>
+    totalPower = 0;
+  <font color="blue">end if</font>;
+<font color="blue">end </font>UniversalSpherical;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Wed Oct 29 09:12:09 2003
+.
+</address></BODY>
+</HTML>

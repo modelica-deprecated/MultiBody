@@ -1,0 +1,403 @@
+<HTML>
+<HEAD><META name="HTML-Generator" content="Dymola"><TITLE>MultiBody</TITLE></HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Utilities<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="MultiBody.Examples.Loops.Utilities"></A><A HREF="MultiBody_Examples_Loops.html#MultiBody.Examples.Loops"
+>MultiBody.Examples.Loops</A>.Utilities</H2>
+<B>Utility models for Examples.Loops</B>
+<P>
+<A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities.Cylinder"
+><IMG SRC="MultiBody.Examples.Loops.Utilities.CylinderI.png" ALT="MultiBody.Examples.Loops.Utilities.Cylinder" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities.GasForce"
+><IMG SRC="MultiBody.Examples.Loops.Utilities.GasForceI.png" ALT="MultiBody.Examples.Loops.Utilities.GasForce" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities.Cylinder_analytic"
+><IMG SRC="MultiBody.Examples.Loops.Utilities.Cylinder_analyticI.png" ALT="MultiBody.Examples.Loops.Utilities.Cylinder_analytic" WIDTH=80  HEIGHT=80 ></A>
+<P><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities.Cylinder"
+>Cylinder</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities.GasForce"
+>GasForce</A>
+</TD><TD>&nbsp;</TD></TR>
+<TR><TD><A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities.Cylinder_analytic"
+>Cylinder_analytic</A>
+</TD><TD>One cylinder with analytic handling of kinematic loop</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Cylinder<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Examples.Loops.Utilities.CylinderI.png" ALT="MultiBody.Examples.Loops.Utilities.Cylinder" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Examples.Loops.Utilities.Cylinder"></A><A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities"
+>MultiBody.Examples.Loops.Utilities</A>.Cylinder</H2>
+<IMG SRC="MultiBody.Examples.Loops.Utilities.CylinderD.png" ALT="MultiBody.Examples.Loops.Utilities.Cylinder">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>cylinderTopPosition</TD><TD>0.42</TD><TD>Length from crank shaft to end of cylinder. [m]</TD></TR>
+<TR><TD>pistonLength</TD><TD>0.1</TD><TD>Length of cylinder [m]</TD></TR>
+<TR><TD>rodLength</TD><TD>0.2</TD><TD>Length of rod [m]</TD></TR>
+<TR><TD>crankLength</TD><TD>0.2</TD><TD>Length of crank shaft in x direction [m]</TD></TR>
+<TR><TD>crankPinOffset</TD><TD>0.1</TD><TD>Offset of crank pin from center axis [m]</TD></TR>
+<TR><TD>crankPinLength</TD><TD>0.1</TD><TD>Offset of crank pin from center axis [m]</TD></TR>
+<TR><TD>cylinderInclination</TD><TD>0</TD><TD>Inclination of cylinder [rad]</TD></TR>
+<TR><TD>crankAngleOffset</TD><TD>0</TD><TD>Offset for crank angle [rad]</TD></TR>
+<TR><TD>cylinderLength</TD><TD>cylinderTopPosition - (pistonLength + rodLength - crankPinOffset)</TD><TD>Maximum length of cylinder volume [m]</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Cylinder
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font>SI.Length cylinderTopPosition=0.42 <font color="darkgreen">
+    &quot;Length from crank shaft to end of cylinder.&quot;</font>;
+  <font color="blue">parameter </font>SI.Length pistonLength=0.1 <font color="darkgreen">&quot;Length of cylinder&quot;</font>;
+  <font color="blue">parameter </font>SI.Length rodLength=0.2 <font color="darkgreen">&quot;Length of rod&quot;</font>;
+  <font color="blue">parameter </font>SI.Length crankLength=0.2 <font color="darkgreen">&quot;Length of crank shaft in x direction&quot;</font>;
+  <font color="blue">parameter </font>SI.Length crankPinOffset=0.1 <font color="darkgreen">&quot;Offset of crank pin from center axis&quot;</font>;
+  <font color="blue">parameter </font>SI.Length crankPinLength=0.1 <font color="darkgreen">&quot;Offset of crank pin from center axis&quot;</font>;
+  <font color="blue">parameter </font>SI.Angle cylinderInclination=0 <font color="darkgreen">&quot;Inclination of cylinder&quot;</font>;
+  <font color="blue">parameter </font>SI.Angle crankAngleOffset=0 <font color="darkgreen">&quot;Offset for crank angle&quot;</font>;
+  <font color="blue">parameter </font>SI.Length cylinderLength=cylinderTopPosition - (pistonLength +
+      rodLength - crankPinOffset) <font color="darkgreen">&quot;Maximum length of cylinder volume&quot;</font>;
+  <font color="darkgreen"></font>
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyCylinder"
+>MultiBody.Parts.BodyCylinder</A> Piston(
+    diameter=0.1,
+    r={0,pistonLength,0},
+    color={180,180,180},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyBox"
+>MultiBody.Parts.BodyBox</A> Rod(
+    widthDirection={1,0,0},
+    height=0.06,
+    color={0,0,200},
+    width=0.02,
+    r_shape={0,-0.02,0},
+    r={0,rodLength,0},
+    animation=animation);
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Revolute"
+>MultiBody.Joints.Revolute</A> B2(
+    n={1,0,0},
+    phi_start=0,
+    cylinderLength=0.02,
+    animation=animation,
+    cylinderDiameter=0.055);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyBox"
+>MultiBody.Parts.BodyBox</A> Crank4(
+    height=0.05,
+    widthDirection={1,0,0},
+    width=0.02,
+    r={0,-crankPinOffset,0},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyCylinder"
+>MultiBody.Parts.BodyCylinder</A> Crank3(
+    r_shape={-0.01,0,0},
+    length=0.12,
+    diameter=0.03,
+    r={crankPinLength,0,0},
+    color={180,180,180},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyCylinder"
+>MultiBody.Parts.BodyCylinder</A> Crank1(
+    diameter=0.05,
+    r_shape={-0.01,0,0},
+    length=0.12,
+    r={crankLength - crankPinLength,0,0},
+    color={180,180,180},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyBox"
+>MultiBody.Parts.BodyBox</A> Crank2(
+    height=0.05,
+    widthDirection={1,0,0},
+    width=0.02,
+    r={0,crankPinOffset,0},
+    animation=animation);
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.Revolute"
+>MultiBody.Joints.Revolute</A> B1(
+    n={1,0,0},
+    planarCutJoint=true,
+    cylinderLength=0.02,
+    animation=animation,
+    cylinderDiameter=0.055);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>MultiBody.Parts.FixedTranslation</A> Mid(r={crankPinLength/2,0,0}, animation=
+        false);
+  <A HREF="MultiBody_Joints.html#MultiBody.Joints.ActuatedPrismatic"
+>MultiBody.Joints.ActuatedPrismatic</A> Cylinder(
+    s_start=-0.3,
+    n={0,-1,0},
+    boxWidth=0.02);
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>MultiBody.Interfaces.Frame_a</A> crank_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>MultiBody.Interfaces.Frame_b</A> crank_b;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>MultiBody.Interfaces.Frame_a</A> cylinder_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>MultiBody.Interfaces.Frame_b</A> cylinder_b;
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>MultiBody.Parts.FixedTranslation</A> Mounting(r={crankLength,0,0}, animation=
+        false);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedRotation"
+>MultiBody.Parts.FixedRotation</A> CylinderInclination(
+    r={crankLength - crankPinLength/2,0,0},
+    n_y={0,<font color="red">cos</font>(cylinderInclination),<font color="red">sin</font>(cylinderInclination)},
+    animation=false,
+    rotationType=MultiBody.Types.RotationTypes.TwoAxesVectors);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedRotation"
+>MultiBody.Parts.FixedRotation</A> CrankAngle1(
+    n_y={0,<font color="red">cos</font>(crankAngleOffset),<font color="red">sin</font>(crankAngleOffset)},
+    animation=false,
+    rotationType=MultiBody.Types.RotationTypes.TwoAxesVectors);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedRotation"
+>MultiBody.Parts.FixedRotation</A> CrankAngle2(
+    n_y={0,<font color="red">cos</font>(-crankAngleOffset),<font color="red">sin</font>(-crankAngleOffset)},
+    animation=false,
+    rotationType=MultiBody.Types.RotationTypes.TwoAxesVectors);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>MultiBody.Parts.FixedTranslation</A> CylinderTop(r={0,cylinderTopPosition,0},
+      animation=false);
+  <A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities.GasForce"
+>GasForce</A> gasForce(L=cylinderLength, d=0.1);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(B1.frame_a, Mid.frame_b);
+  <font color="darkgreen"></font>
+  <font color="red">connect</font>(Mounting.frame_a, cylinder_a);
+  <font color="red">connect</font>(Mounting.frame_b, cylinder_b);
+  <font color="red">connect</font>(Rod.frame_a, B1.frame_b);
+  <font color="red">connect</font>(Cylinder.frame_b, Piston.frame_b);
+  <font color="red">connect</font>(Crank1.frame_a, CrankAngle1.frame_b);
+  <font color="red">connect</font>(B2.frame_a, Piston.frame_a);
+  <font color="red">connect</font>(Rod.frame_b, B2.frame_b);
+  <font color="red">connect</font>(CrankAngle1.frame_a, crank_a);
+  <font color="red">connect</font>(Crank4.frame_b, CrankAngle2.frame_a);
+  <font color="red">connect</font>(CrankAngle2.frame_b, crank_b);
+  <font color="red">connect</font>(Cylinder.bearing, gasForce.flange_b);
+  <font color="red">connect</font>(Cylinder.axis, gasForce.flange_a);
+  <font color="red">connect</font>(CylinderInclination.frame_b, CylinderTop.frame_a);
+  <font color="red">connect</font>(CylinderInclination.frame_a, cylinder_a);
+  <font color="red">connect</font>(Crank1.frame_b, Crank2.frame_a);
+  <font color="red">connect</font>(Crank3.frame_b, Crank4.frame_a);
+  <font color="red">connect</font>(Crank3.frame_a, Crank2.frame_b);
+  <font color="red">connect</font>(Crank2.frame_b, Mid.frame_a);
+  <font color="red">connect</font>(CylinderTop.frame_b, Cylinder.frame_a);
+<font color="blue">end </font>Cylinder;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Cylinder_analytic<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Examples.Loops.Utilities.Cylinder_analyticI.png" ALT="MultiBody.Examples.Loops.Utilities.Cylinder_analytic" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Examples.Loops.Utilities.Cylinder_analytic"></A><A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities"
+>MultiBody.Examples.Loops.Utilities</A>.Cylinder_analytic</H2>
+<B>One cylinder with analytic handling of kinematic loop</B><p>
+<IMG SRC="MultiBody.Examples.Loops.Utilities.Cylinder_analyticD.png" ALT="MultiBody.Examples.Loops.Utilities.Cylinder_analytic">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>cylinderTopPosition</TD><TD>0.42</TD><TD>Length from crank shaft to end of cylinder. [m]</TD></TR>
+<TR><TD>pistonLength</TD><TD>0.1</TD><TD>Length of cylinder [m]</TD></TR>
+<TR><TD>rodLength</TD><TD>0.2</TD><TD>Length of rod [m]</TD></TR>
+<TR><TD>crankLength</TD><TD>0.2</TD><TD>Length of crank shaft in x direction [m]</TD></TR>
+<TR><TD>crankPinOffset</TD><TD>0.1</TD><TD>Offset of crank pin from center axis [m]</TD></TR>
+<TR><TD>crankPinLength</TD><TD>0.1</TD><TD>Offset of crank pin from center axis [m]</TD></TR>
+<TR><TD>cylinderInclination</TD><TD>0</TD><TD>Inclination of cylinder [rad]</TD></TR>
+<TR><TD>crankAngleOffset</TD><TD>0</TD><TD>Offset for crank angle [rad]</TD></TR>
+<TR><TD>cylinderLength</TD><TD>cylinderTopPosition - (pistonLength + rodLength - crankPinOffset)</TD><TD>Maximum length of cylinder volume [m]</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Cylinder_analytic <font color="darkgreen">
+  &quot;One cylinder with analytic handling of kinematic loop&quot;</font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font>SI.Length cylinderTopPosition=0.42 <font color="darkgreen">
+    &quot;Length from crank shaft to end of cylinder.&quot;</font>;
+  <font color="blue">parameter </font>SI.Length pistonLength=0.1 <font color="darkgreen">&quot;Length of cylinder&quot;</font>;
+  <font color="blue">parameter </font>SI.Length rodLength=0.2 <font color="darkgreen">&quot;Length of rod&quot;</font>;
+  <font color="blue">parameter </font>SI.Length crankLength=0.2 <font color="darkgreen">&quot;Length of crank shaft in x direction&quot;</font>;
+  <font color="blue">parameter </font>SI.Length crankPinOffset=0.1 <font color="darkgreen">&quot;Offset of crank pin from center axis&quot;</font>;
+  <font color="blue">parameter </font>SI.Length crankPinLength=0.1 <font color="darkgreen">&quot;Offset of crank pin from center axis&quot;</font>;
+  <font color="blue">parameter </font>SI.Angle cylinderInclination=0 <font color="darkgreen">&quot;Inclination of cylinder&quot;</font>;
+  <font color="blue">parameter </font>SI.Angle crankAngleOffset=0 <font color="darkgreen">&quot;Offset for crank angle&quot;</font>;
+  <font color="blue">parameter </font>SI.Length cylinderLength=cylinderTopPosition - (pistonLength +
+      rodLength - crankPinOffset) <font color="darkgreen">&quot;Maximum length of cylinder volume&quot;</font>;
+  <font color="darkgreen"></font>
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyBox"
+>MultiBody.Parts.BodyBox</A> Crank4(
+    height=0.05,
+    widthDirection={1,0,0},
+    width=0.02,
+    r={0,-crankPinOffset,0},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyCylinder"
+>MultiBody.Parts.BodyCylinder</A> Crank3(
+    r_shape={-0.01,0,0},
+    length=0.12,
+    diameter=0.03,
+    r={crankPinLength,0,0},
+    color={180,180,180},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyCylinder"
+>MultiBody.Parts.BodyCylinder</A> Crank1(
+    diameter=0.05,
+    r_shape={-0.01,0,0},
+    length=0.12,
+    r={crankLength - crankPinLength,0,0},
+    color={180,180,180},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyBox"
+>MultiBody.Parts.BodyBox</A> Crank2(
+    height=0.05,
+    widthDirection={1,0,0},
+    width=0.02,
+    r={0,crankPinOffset,0},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>MultiBody.Parts.FixedTranslation</A> Mid(r={crankPinLength/2,0,0}, animation=
+        false);
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>MultiBody.Interfaces.Frame_a</A> crank_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>MultiBody.Interfaces.Frame_b</A> crank_b;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>MultiBody.Interfaces.Frame_a</A> cylinder_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>MultiBody.Interfaces.Frame_b</A> cylinder_b;
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>MultiBody.Parts.FixedTranslation</A> Mounting(r={crankLength,0,0}, animation=
+        false);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedRotation"
+>MultiBody.Parts.FixedRotation</A> CylinderInclination(
+    r={crankLength - crankPinLength/2,0,0},
+    n_y={0,<font color="red">cos</font>(cylinderInclination),<font color="red">sin</font>(cylinderInclination)},
+    animation=false,
+    rotationType=MultiBody.Types.RotationTypes.TwoAxesVectors);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedRotation"
+>MultiBody.Parts.FixedRotation</A> CrankAngle1(
+    n_y={0,<font color="red">cos</font>(crankAngleOffset),<font color="red">sin</font>(crankAngleOffset)},
+    animation=false,
+    rotationType=MultiBody.Types.RotationTypes.TwoAxesVectors);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedRotation"
+>MultiBody.Parts.FixedRotation</A> CrankAngle2(
+    n_y={0,<font color="red">cos</font>(-crankAngleOffset),<font color="red">sin</font>(-crankAngleOffset)},
+    animation=false,
+    rotationType=MultiBody.Types.RotationTypes.TwoAxesVectors);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>MultiBody.Parts.FixedTranslation</A> CylinderTop(r={0,cylinderTopPosition,0},
+      animation=false);
+  <A HREF="MultiBody_Joints_Assemblies.html#MultiBody.Joints.Assemblies.JointRRP"
+>Joints.Assemblies.JointRRP</A> jointRRP(
+    n_a={1,0,0},
+    n_b={0,-1,0},
+    rRod1_ia={0,rodLength,0},
+    animation=false,
+    rRod2_ib=-{0,pistonLength,0});
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyBox"
+>MultiBody.Parts.BodyBox</A> Rod(
+    widthDirection={1,0,0},
+    height=0.06,
+    color={0,0,200},
+    width=0.02,
+    r_shape={0,-0.02,0},
+    r={0,rodLength,0},
+    animation=animation);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyCylinder"
+>MultiBody.Parts.BodyCylinder</A> Piston(
+    diameter=0.1,
+    r={0,pistonLength,0},
+    color={180,180,180},
+    animation=animation);
+  <A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities.GasForce"
+>GasForce</A> gasForce(L=cylinderLength, d=0.1);
+<font color="blue">equation </font>
+  <font color="darkgreen"></font>
+  <font color="red">connect</font>(Mounting.frame_a, cylinder_a);
+  <font color="red">connect</font>(Mounting.frame_b, cylinder_b);
+  <font color="red">connect</font>(Crank1.frame_a, CrankAngle1.frame_b);
+  <font color="red">connect</font>(CrankAngle1.frame_a, crank_a);
+  <font color="red">connect</font>(Crank4.frame_b, CrankAngle2.frame_a);
+  <font color="red">connect</font>(CrankAngle2.frame_b, crank_b);
+  <font color="red">connect</font>(CylinderInclination.frame_a, cylinder_a);
+  <font color="red">connect</font>(Crank1.frame_b, Crank2.frame_a);
+  <font color="red">connect</font>(Crank3.frame_b, Crank4.frame_a);
+  <font color="red">connect</font>(Crank3.frame_a, Crank2.frame_b);
+  <font color="red">connect</font>(Crank2.frame_b, Mid.frame_a);
+  <font color="red">connect</font>(jointRRP.frame_ia, Rod.frame_a);
+  <font color="red">connect</font>(Mid.frame_b, jointRRP.frame_a);
+  <font color="red">connect</font>(CylinderInclination.frame_b, CylinderTop.frame_a);
+  <font color="red">connect</font>(gasForce.flange_a, jointRRP.axis);
+  <font color="red">connect</font>(jointRRP.bearing, gasForce.flange_b);
+  <font color="red">connect</font>(jointRRP.frame_ib, Piston.frame_b);
+  <font color="red">connect</font>(jointRRP.frame_b, CylinderTop.frame_b);
+<font color="blue">end </font>Cylinder_analytic;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE GasForce<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Examples.Loops.Utilities.GasForceI.png" ALT="MultiBody.Examples.Loops.Utilities.GasForce" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Examples.Loops.Utilities.GasForce"></A><A HREF="MultiBody_Examples_Loops_Utilities.html#MultiBody.Examples.Loops.Utilities"
+>MultiBody.Examples.Loops.Utilities</A>.GasForce</H2>
+<IMG SRC="MultiBody.Examples.Loops.Utilities.GasForceD.png" ALT="MultiBody.Examples.Loops.Utilities.GasForce">
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>L</TD><TD>&nbsp;</TD><TD>Length of cylinder [m]</TD></TR>
+<TR><TD>d</TD><TD>&nbsp;</TD><TD>diameter of cylinder [m]</TD></TR>
+<TR><TD>k0</TD><TD>0.01</TD><TD>&nbsp;</TD></TR>
+<TR><TD>k1</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+<TR><TD>k</TD><TD>1</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> GasForce
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="darkgreen"></font>
+  <font color="blue">extends </font>Modelica.Mechanics.Translational.Interfaces.Compliant;
+  <font color="blue">parameter </font>SI.Length L <font color="darkgreen">&quot;Length of cylinder&quot;</font>;
+  <font color="blue">parameter </font>SI.Length d <font color="darkgreen">&quot;diameter of cylinder&quot;</font>;
+  <font color="blue">parameter </font>Real k0=0.01;
+  <font color="blue">parameter </font>Real k1=1;
+  <font color="blue">parameter </font>Real k=1;
+  <font color="blue">constant </font>Real pi=Modelica.Constants.pi;
+  <font color="blue">constant </font>Real PI=Modelica.Constants.pi;
+  <font color="darkgreen">// Only for compatibility reasons</font>
+  SI.Position x;
+  SI.Position y;
+  SI.Density dens;
+  SI.Pressure press <font color="darkgreen">&quot;cylinder pressure&quot;</font>;
+  SI.Volume V;
+  SI.Temperature T;
+  SI.Velocity v_rel;
+<font color="blue">equation </font>
+  <font color="darkgreen"></font>
+  y = -s_rel/L;
+  x = 1 + s_rel/L;
+  v_rel = <font color="red">der</font>(s_rel);
+  <font color="darkgreen"></font>
+  press = <font color="blue">if </font>v_rel &lt; 0<font color="blue"> then </font>(<font color="blue">if </font>x &lt; 0.987<font color="blue"> then </font>177.4132*x^4 - 287.2189*x^3 +
+    151.8252*x^2 - 24.9973*x + 2.4<font color="blue"> else </font>2836360*x^4 - 10569296*x^3 + 14761814*x
+    ^2 - 9158505*x + 2129670)<font color="blue"> else </font>(<font color="blue">if </font>x &gt; 0.93<font color="blue"> then </font>-3929704*x^4 + 14748765*x^
+    3 - 20747000*x^2 + 12964477*x - 3036495<font color="blue"> else </font>145.930*x^4 - 131.707*x^3 +
+    17.3438*x^2 + 17.9272*x + 2.4);
+  <font color="darkgreen"></font>
+  f = -1.0E5*press*pi*d^2/4;
+  <font color="darkgreen"></font>
+  V = k0 + k1*(1 - x);
+  dens = 1/V;
+  press*V = k*T;
+<font color="blue">end </font>GasForce;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Wed Oct 29 09:12:41 2003
+.
+</address></BODY>
+</HTML>

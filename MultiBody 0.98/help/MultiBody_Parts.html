@@ -1,0 +1,1531 @@
+<HTML>
+<HEAD><META name="HTML-Generator" content="Dymola"><TITLE>MultiBody</TITLE></HEAD>
+<BODY><P>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Parts<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><A NAME="MultiBody.Parts"></A><A HREF="MultiBody.html#MultiBody"
+>MultiBody</A>.Parts</H2>
+<B>Rigid components such as bodies with mass and inertia and massless rods</B>
+<P>
+<A HREF="MultiBody_Parts.html#MultiBody.Parts.Fixed"
+><IMG SRC="MultiBody.Parts.FixedI.png" ALT="MultiBody.Parts.Fixed" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+><IMG SRC="MultiBody.Parts.FixedTranslationI.png" ALT="MultiBody.Parts.FixedTranslation" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedRotation"
+><IMG SRC="MultiBody.Parts.FixedRotationI.png" ALT="MultiBody.Parts.FixedRotation" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Parts.html#MultiBody.Parts.Body"
+><IMG SRC="MultiBody.Parts.BodyI.png" ALT="MultiBody.Parts.Body" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyShape"
+><IMG SRC="MultiBody.Parts.BodyShapeI.png" ALT="MultiBody.Parts.BodyShape" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyBox"
+><IMG SRC="MultiBody.Parts.BodyBoxI.png" ALT="MultiBody.Parts.BodyBox" WIDTH=80  HEIGHT=80 ></A>
+<A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyCylinder"
+><IMG SRC="MultiBody.Parts.BodyCylinderI.png" ALT="MultiBody.Parts.BodyCylinder" WIDTH=80  HEIGHT=80 ></A>
+<P><P>
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Package <b>Parts</b> contains <b>rigid components</b> of a
+multi-body system. These components may be used to build up
+more complicated structures. For example, a part may be built up of
+a "Body" and of several "FixedTranslation" components.
+<p>
+<h4>Content</h4>
+<table border=1 cellspacing=0 cellpadding=2>
+  <tr><th><b><i>Model</i></b></th><th><b><i>Description</i></b></th></tr>
+  <tr><td><b>Fixed</b></td>
+      <td>Frame fixed in world frame at a given position.
+          It is visualized with a shape, see <b>shapeType</b> below
+         (the frames on the two
+          sides do not belong to the component):<br>&nbsp;<br>
+      <IMG SRC="../Images/Fixed.png" ALT="model Parts.Fixed">
+      </td>
+  </tr>
+  <tr><td><b>FixedTranslation</b></td>
+      <td>Fixed translation of frame_b with respect to frame_a.
+          It is visualized with a shape, see <b>shapeType</b> below
+          (the frames on the two sides do not belong to the component):<br>&nbsp;<br>
+      <IMG SRC="../Images/FixedTranslation.png" ALT="model Parts.FixedTranslation">
+      </td>
+  </tr>
+  <tr><td><b>FixedRotation</b></td>
+      <td>Fixed translation and fixed rotation of frame_b with respect to frame_a
+          It is visualized with a shape, see <b>shapeType</b>  below
+          (the frames on the two sides do not belong to the component):<br>&nbsp;<br>
+      <IMG SRC="../Images/FixedRotation.png" ALT="model Parts.FixedRotation">
+      </td>
+  </tr>
+  <tr><td><b>Body</b></td>
+      <td>Rigid body with mass, inertia tensor and one frame connector.
+          It is visualized with a cylinder and a sphere at the
+          center of mass:<br>&nbsp;<br>
+      <IMG SRC="../Images/Body.png" ALT="model Parts.Body">
+      </td>
+  </tr>
+  <tr><td><b>BodyShape</b></td>
+      <td>Rigid body with mass, inertia tensor, different shapes
+          (see <b>shapeType</b> below)
+          for animation, and two frame connectors:<br>&nbsp;<br>
+      <IMG SRC="../Images/BodyShape.png" ALT="model Parts.BodyShape">
+      </td>
+  </tr>
+  <tr><td><b>BodyBox</b></td>
+      <td>Rigid body with box shape (mass and animation properties are computed
+          from box data and from density):<br>&nbsp;<br>
+      <IMG SRC="../Images/BodyBox.png" ALT="model Parts.BodyBox">
+      </td>
+  </tr>
+  <tr><td><b>BodyCylinder</b></td>
+      <td>Rigid body with cylinder shape (mass and animation properties
+          are computed from cylinder data and from density):<br>&nbsp;<br>
+      <IMG SRC="../Images/BodyCylinder.png" ALT="model Parts.BodyCylinder">
+      </td>
+  </tr>
+</table>
+<p>
+Components <b>Fixed</b>, <b>FixedTranslation</b>, <b>FixedRotation</b>
+and <b>BodyShape</b> are visualized according to parameter
+<b>shapeType</b>, that may have the following values (e.g., shapeType = "box"): <br>&nbsp;<br>
+</p>
+<IMG SRC="../Images/FixedShape.png" ALT="model Visualizers.FixedShape">
+<p>
+Colors in all animation parts are defined via parameter <b>color</b>.
+This is an Integer vector with 3 elements, {r, g, b}, and specifies the
+color of the shape. {r,g,b} are the "red", "green" and "blue" color parts,
+given in the ranges 0 .. 255, respectively. The predefined type
+<b>MultiBody.Types.Color</b> contains a menu
+definition of the colors used in the MultiBody library
+(this will be replaced by a color editor).
+</p>
+<pre>
+</PRE><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Description</TH></TR>
+<TR><TD><A HREF="MultiBody_Parts.html#MultiBody.Parts.Fixed"
+>Fixed</A>
+</TD><TD>Frame fixed in the world frame at a given position</TD></TR>
+<TR><TD><A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>FixedTranslation</A>
+</TD><TD>Fixed translation of frame_b with respect to frame_a</TD></TR>
+<TR><TD><A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedRotation"
+>FixedRotation</A>
+</TD><TD>Fixed translation and fixed rotation of frame_b with respect to frame_a</TD></TR>
+<TR><TD><A HREF="MultiBody_Parts.html#MultiBody.Parts.Body"
+>Body</A>
+</TD><TD>Rigid body with mass, inertia tensor and one frame connector (12 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyShape"
+>BodyShape</A>
+</TD><TD>Rigid body with mass, inertia tensor, different shapes for animation, and two frame connectors (12 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyBox"
+>BodyBox</A>
+</TD><TD>Rigid body with box shape. Mass and animation properties are computed from box data and density (12 potential states)</TD></TR>
+<TR><TD><A HREF="MultiBody_Parts.html#MultiBody.Parts.BodyCylinder"
+>BodyCylinder</A>
+</TD><TD>Rigid body with cylinder shape. Mass and animation properties are computed from cylinder data and density (12 potential states)</TD></TR>
+</TABLE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Fixed<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Parts.FixedI.png" ALT="MultiBody.Parts.Fixed" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Parts.Fixed"></A><A HREF="MultiBody_Parts.html#MultiBody.Parts"
+>MultiBody.Parts</A>.Fixed</H2>
+<B>Frame fixed in the world frame at a given position</B><p>
+<IMG SRC="MultiBody.Parts.FixedD.png" ALT="MultiBody.Parts.Fixed">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Element consisting of a frame (frame_b) that is fixed in the world
+frame at a given position defined by parameter vector <b>r</b>
+(vector from origin of world frame to frame_b, resolved in the
+world frame).
+</p>
+<p>
+By default, this component is visualized by a cylinder connecting the
+world frame and frame_b of this components, as shown in the figure below.
+Note, that the visualized world frame on the left side and
+Fixed.frame_b on the right side are not part of the
+component animation and that the animation may be switched off via parameter
+animation = <b>false</b>.
+</p>
+<IMG SRC="../Images/Fixed.png" ALT="Parts.Fixed">
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>r[3]</TD><TD>{0,0,0}</TD><TD>Position vector from world frame to frame_b, resolved in world frame [m]</TD></TR>
+<TR><TD>shapeType</TD><TD>&quot;cylinder&quot;</TD><TD> Type of shape</TD></TR>
+<TR><TD>r_shape[3]</TD><TD>{0,0,0}</TD><TD> Vector from world frame to shape origin, resolved in world frame [m]</TD></TR>
+<TR><TD>lengthDirection[3]</TD><TD>r - r_shape</TD><TD> Vector in length direction of shape, resolved in world frame [m]</TD></TR>
+<TR><TD>widthDirection[3]</TD><TD>{0,1,0}</TD><TD> Vector in width direction of shape, resolved in world frame [m]</TD></TR>
+<TR><TD>length</TD><TD>Frames.length(r - r_shape)</TD><TD> Length of shape [m]</TD></TR>
+<TR><TD>width</TD><TD>length/world.defaultWidthFraction</TD><TD> Width of shape [m]</TD></TR>
+<TR><TD>height</TD><TD>width</TD><TD> Height of shape [m]</TD></TR>
+<TR><TD>extra</TD><TD>0.0</TD><TD> Additional parameter for cone, pipe etc. (see docu of Visualizers.Advanced.Shape)</TD></TR>
+<TR><TD>color</TD><TD>MultiBody.Types.Defaults.RodColor</TD><TD> Color of shape</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Fixed <font color="darkgreen">&quot;Frame fixed in the world frame at a given position&quot;</font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>Interfaces.Frame_b</A> frame_b;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r[3]={0,0,0} <font color="darkgreen">
+    &quot;Position vector from world frame to frame_b, resolved in world frame&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.ShapeType"
+>MultiBody.Types.ShapeType</A> shapeType=&quot;cylinder&quot; <font color="darkgreen">
+    &quot;|Animation|if animation = true| Type of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_shape[3]={0,0,0} <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector from world frame to shape origin, resolved in world frame&quot;</font>;
+  <font color="blue">parameter </font>SI.Position lengthDirection[3]=r - r_shape <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector in length direction of shape, resolved in world frame&quot;</font>;
+  <font color="blue">parameter </font>SI.Position widthDirection[3]={0,1,0} <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector in width direction of shape, resolved in world frame&quot;</font>;
+  <font color="blue">parameter </font>SI.Length length=<font color="red">Frames.length</font>(r - r_shape) <font color="darkgreen">
+    &quot;|Animation|if animation = true| Length of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance width=length/world.defaultWidthFraction <font color="darkgreen">
+    &quot;|Animation|if animation = true| Width of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance height=width <font color="darkgreen">
+    &quot;|Animation|if animation = true| Height of shape&quot;</font>;
+  <font color="blue">parameter </font>Real extra=0.0 <font color="darkgreen">
+    &quot;|Animation|if animation = true| Additional parameter for cone, pipe etc. (see docu of Visualizers.Advanced.Shape)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> color=MultiBody.Types.Defaults.RodColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of shape&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">outer </font><A HREF="MultiBody.html#MultiBody.World"
+>MultiBody.World</A> world;
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> shape[ndim](
+    <font color="blue">each </font>shapeType=shapeType,
+    <font color="blue">each </font>color=color,
+    <font color="blue">each </font>length=length,
+    <font color="blue">each </font>width=width,
+    <font color="blue">each </font>height=height,
+    <font color="blue">each </font>lengthDirection=lengthDirection,
+    <font color="blue">each </font>widthDirection=widthDirection,
+    <font color="blue">each </font>extra=extra,
+    <font color="blue">each </font>r_shape=r_shape,
+    <font color="blue">each </font>r=<font color="red">zeros</font>(3),
+    <font color="blue">each </font>R=<font color="red">Frames.nullRotation</font>());
+<font color="blue">equation </font>
+  <font color="red">defineRoot</font>(frame_b.R);
+  frame_b.r_0 = r;
+  frame_b.R = <font color="red">Frames.nullRotation</font>();
+<font color="blue">end </font>Fixed;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FixedTranslation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Parts.FixedTranslationI.png" ALT="MultiBody.Parts.FixedTranslation" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Parts.FixedTranslation"></A><A HREF="MultiBody_Parts.html#MultiBody.Parts"
+>MultiBody.Parts</A>.FixedTranslation</H2>
+<B>Fixed translation of frame_b with respect to frame_a</B><p>
+<IMG SRC="MultiBody.Parts.FixedTranslationD.png" ALT="MultiBody.Parts.FixedTranslation">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Component for a <b>fixed translation</b> of frame_b with respect
+to frame_a, i.e., the relationship between connectors frame_a and frame_b
+remains constant and frame_a is always <b>parallel</b> to frame_b.
+</p>
+<p>
+By default, this component is visualized by a cylinder connecting
+frame_a and frame_b, as shown in the figure below. Note, that the
+two visualized frames are not part of the component animation and that
+the animation may be switched off via parameter animation = <b>false</b>.
+</p>
+<IMG SRC="../Images/FixedTranslation.png" ALT="Parts.FixedTranslation">
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>r[3]</TD><TD>{0,0,0}</TD><TD>Vector from frame_a to frame_b resolved in frame_a [m]</TD></TR>
+<TR><TD>shapeType</TD><TD>&quot;cylinder&quot;</TD><TD> Type of shape</TD></TR>
+<TR><TD>r_shape[3]</TD><TD>{0,0,0}</TD><TD> Vector from frame_a to shape origin, resolved in frame_a [m]</TD></TR>
+<TR><TD>lengthDirection</TD><TD>r - r_shape</TD><TD> Vector in length direction of shape, resolved in frame_a</TD></TR>
+<TR><TD>widthDirection</TD><TD>{0,1,0}</TD><TD> Vector in width direction of shape, resolved in frame_a</TD></TR>
+<TR><TD>length</TD><TD>Frames.length(r - r_shape)</TD><TD> Length of shape [m]</TD></TR>
+<TR><TD>width</TD><TD>length/world.defaultWidthFraction</TD><TD> Width of shape [m]</TD></TR>
+<TR><TD>height</TD><TD>width</TD><TD> Height of shape. [m]</TD></TR>
+<TR><TD>extra</TD><TD>0.0</TD><TD> Additional parameter depending on shapeType (see docu of Visualizers.Advanced.Shape).</TD></TR>
+<TR><TD>color</TD><TD>MultiBody.Types.Defaults.RodColor</TD><TD> Color of shape</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> FixedTranslation <font color="darkgreen">
+  &quot;Fixed translation of frame_b with respect to frame_a&quot;</font>
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>Interfaces.Frame_a</A> frame_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>Interfaces.Frame_b</A> frame_b;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r[3]={0,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to frame_b resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.ShapeType"
+>MultiBody.Types.ShapeType</A> shapeType=&quot;cylinder&quot; <font color="darkgreen">
+    &quot;|Animation|if animation = true| Type of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_shape[3]={0,0,0} <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector from frame_a to shape origin, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> lengthDirection=r - r_shape <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector in length direction of shape, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> widthDirection={0,1,0} <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector in width direction of shape, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Length length=<font color="red">Frames.length</font>(r - r_shape) <font color="darkgreen">
+    &quot;|Animation|if animation = true| Length of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance width=length/world.defaultWidthFraction <font color="darkgreen">
+    &quot;|Animation|if animation = true| Width of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance height=width <font color="darkgreen">
+    &quot;|Animation|if animation = true| Height of shape.&quot;</font>;
+  <font color="blue">parameter </font>Real extra=0.0 <font color="darkgreen">
+    &quot;|Animation|if animation = true| Additional parameter depending on shapeType (see docu of Visualizers.Advanced.Shape).&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> color=MultiBody.Types.Defaults.RodColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of shape&quot;</font>;
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">outer </font><A HREF="MultiBody.html#MultiBody.World"
+>MultiBody.World</A> world;
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> shape[ndim](
+    <font color="blue">each </font>shapeType=shapeType,
+    <font color="blue">each </font>color=color,
+    <font color="blue">each </font>r_shape=r_shape,
+    <font color="blue">each </font>lengthDirection=lengthDirection,
+    <font color="blue">each </font>widthDirection=widthDirection,
+    <font color="blue">each </font>length=length,
+    <font color="blue">each </font>width=width,
+    <font color="blue">each </font>height=height,
+    <font color="blue">each </font>extra=extra,
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+<font color="blue">equation </font>
+  <font color="red">defineBranch</font>(frame_a.R, frame_b.R);
+  <font color="red">assert</font>(<font color="red">cardinality</font>(frame_a) &gt; 0<font color="blue"> or </font><font color="red">cardinality</font>(frame_b) &gt; 0,
+    &quot;Neither connector frame_a nor frame_b of FixedTranslation object is connected&quot;);
+  <font color="darkgreen"></font>
+  frame_b.r_0 = frame_a.r_0 + <font color="red">Frames.resolve1</font>(frame_a.R, r);
+  frame_b.R = frame_a.R;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* Force and torque balance */</font>
+  <font color="red">zeros</font>(3) = frame_a.f + frame_b.f;
+  <font color="red">zeros</font>(3) = frame_a.t + frame_b.t + <font color="red">cross</font>(r, frame_b.f);
+<font color="blue">end </font>FixedTranslation;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE FixedRotation<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Parts.FixedRotationI.png" ALT="MultiBody.Parts.FixedRotation" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Parts.FixedRotation"></A><A HREF="MultiBody_Parts.html#MultiBody.Parts"
+>MultiBody.Parts</A>.FixedRotation</H2>
+<B>Fixed translation and fixed rotation of frame_b with respect to frame_a</B><p>
+<IMG SRC="MultiBody.Parts.FixedRotationD.png" ALT="MultiBody.Parts.FixedRotation">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+Component for a <b>fixed translation</b> and <b>fixed rotation</b> of frame_b with respect
+to frame_a, i.e., the relationship between connectors frame_a and frame_b
+remains constant. There are several possibilities to define the
+orientation of frame_b with respect to frame_a:
+</p>
+<ul>
+<li><b>Planar rotation</b> along axis 'n' (that is fixed and resolved
+    in frame_a) with a fixed angle 'angle'.</li>
+<li><b>Vectors n_x</b> and <b>n_y</b> that are directed along the corresponding axes
+    direction of frame_b and are resolved in frame_a (if n_y is not
+    orthogonal to n_x, the y-axis of frame_b is selected such that it is
+    orthogonal to n_x and in the plane of n_x and n_y).</li>
+<li><b>Sequence</b> of <b>three planar axes rotations</b>.
+    For example, "sequence = {1,2,3}" and "angles = {90, 45, -90}"
+    means to rotate frame_a around the x axis with 90 degrees, around the new
+    y axis with 45 degrees and around the new z axis around -90 degrees to
+    arrive at frame_b. Note, that sequence={1,2,3}
+    is the Cardan angle sequence and sequence = {3,1,3} is the Euler angle
+    sequence.</li>
+</ul>
+<p>
+By default, this component is visualized by a cylinder connecting
+frame_a and frame_b, as shown in the figure below. In this figure
+frame_b is rotated along the z-axis of frame_a with 60 degree. Note, that the
+two visualized frames are not part of the component animation and that
+the animation may be switched off via parameter animation = <b>false</b>.
+</p>
+<IMG SRC="../Images/FixedRotation.png" ALT="Parts.FixedRotation">
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled</TD></TR>
+<TR><TD>r[3]</TD><TD>{0,0,0}</TD><TD>Vector from frame_a to frame_b resolved in frame_a [m]</TD></TR>
+<TR><TD>rotationType</TD><TD>MultiBody.Types.RotationTypes.RotationAxis</TD><TD>Type of rotation description</TD></TR>
+<TR><TD>n</TD><TD>{1,0,0}</TD><TD> Axis of rotation in frame_a (= same as in frame_b)</TD></TR>
+<TR><TD>angle</TD><TD>0</TD><TD> Angle to rotate frame_a around axis n into frame_b [deg]</TD></TR>
+<TR><TD>n_x</TD><TD>{1,0,0}</TD><TD> Vector along x-axis of frame_b resolved in frame_a</TD></TR>
+<TR><TD>n_y</TD><TD>{0,1,0}</TD><TD> Vector along y-axis of frame_b resolved in frame_a</TD></TR>
+<TR><TD>sequence</TD><TD>{1,2,3}</TD><TD> Sequence of rotations</TD></TR>
+<TR><TD>angles[3]</TD><TD>{0,0,0}</TD><TD> Rotation angles around the axes defined in 'sequence' [deg]</TD></TR>
+<TR><TD>shapeType</TD><TD>&quot;cylinder&quot;</TD><TD> Type of shape</TD></TR>
+<TR><TD>r_shape[3]</TD><TD>{0,0,0}</TD><TD> Vector from frame_a to shape origin, resolved in frame_a [m]</TD></TR>
+<TR><TD>lengthDirection</TD><TD>r - r_shape</TD><TD> Vector in length direction of shape, resolved in frame_a</TD></TR>
+<TR><TD>widthDirection</TD><TD>{0,1,0}</TD><TD> Vector in width direction of shape, resolved in frame_a</TD></TR>
+<TR><TD>length</TD><TD>MultiBody.Frames.length(r - r_shape)</TD><TD> Length of shape [m]</TD></TR>
+<TR><TD>width</TD><TD>length/world.defaultWidthFraction</TD><TD> Width of shape [m]</TD></TR>
+<TR><TD>height</TD><TD>width</TD><TD> Height of shape. [m]</TD></TR>
+<TR><TD>extra</TD><TD>0.0</TD><TD> Additional parameter depending on shapeType (see docu of Visualizers.Advanced.Shape).</TD></TR>
+<TR><TD>color</TD><TD>MultiBody.Types.Defaults.RodColor</TD><TD> Color of shape</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> FixedRotation <font color="darkgreen">
+  &quot;Fixed translation and fixed rotation of frame_b with respect to frame_a&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">import </font>Cv = Modelica.SIunits.Conversions;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>MultiBody.Interfaces.Frame_a</A> frame_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>MultiBody.Interfaces.Frame_b</A> frame_b;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">&quot;= true, if animation shall be enabled&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r[3]={0,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to frame_b resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_RotationTypes.html#MultiBody.Types.RotationTypes.Temp"
+>MultiBody.Types.RotationTypes.Temp</A> rotationType=MultiBody.Types.
+      RotationTypes.RotationAxis <font color="darkgreen">&quot;Type of rotation description&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n={1,0,0} <font color="darkgreen">
+    &quot;|if rotationType = RotationAxis| Axis of rotation in frame_a (= same as in frame_b)&quot;</font>;
+  <font color="blue">parameter </font>Cv.NonSIunits.Angle_deg angle=0 <font color="darkgreen">
+    &quot;|if rotationType = RotationAxis| Angle to rotate frame_a around axis n into frame_b&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n_x={1,0,0} <font color="darkgreen">
+    &quot;|if rotationType = TwoAxesVectors| Vector along x-axis of frame_b resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> n_y={0,1,0} <font color="darkgreen">
+    &quot;|if rotationType = TwoAxesVectors| Vector along y-axis of frame_b resolved in frame_a&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.RotationSequence"
+>MultiBody.Types.RotationSequence</A> sequence(
+    min={1,1,1},
+    max={3,3,3}) = {1,2,3} <font color="darkgreen">
+    &quot;|if rotationType = PlanarRotationSequence| Sequence of rotations&quot;</font>;
+  <font color="blue">parameter </font>Cv.NonSIunits.Angle_deg angles[3]={0,0,0} <font color="darkgreen">
+    &quot;|if rotationType = PlanarRotationSequence| Rotation angles around the axes defined in 'sequence'&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.ShapeType"
+>MultiBody.Types.ShapeType</A> shapeType=&quot;cylinder&quot; <font color="darkgreen">
+    &quot;|Animation|if animation = true| Type of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_shape[3]={0,0,0} <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector from frame_a to shape origin, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> lengthDirection=r - r_shape <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector in length direction of shape, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> widthDirection={0,1,0} <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector in width direction of shape, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Length length=<font color="red">MultiBody.Frames.length</font>(r - r_shape) <font color="darkgreen">
+    &quot;|Animation|if animation = true| Length of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance width=length/world.defaultWidthFraction <font color="darkgreen">
+    &quot;|Animation|if animation = true| Width of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance height=width <font color="darkgreen">
+    &quot;|Animation|if animation = true| Height of shape.&quot;</font>;
+  <font color="blue">parameter </font>Real extra=0.0 <font color="darkgreen">
+    &quot;|Animation|if animation = true| Additional parameter depending on shapeType (see docu of Visualizers.Advanced.Shape).&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> color=MultiBody.Types.Defaults.RodColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of shape&quot;</font>;
+  <font color="darkgreen"></font>
+  <A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>MultiBody.Frames.Orientation</A> R_rel=<font color="blue">if </font>rotationType == 1<font color="blue"> then </font><font color="red">
+      MultiBody.Frames.planarRotation</font>(<font color="red">MultiBody.Frames.normalize</font>(n), <font color="red">
+      Cv.from_deg</font>(angle))<font color="blue"> else </font><font color="blue">if </font>rotationType == 2<font color="blue"> then </font><font color="red">
+      MultiBody.Frames.from_nxy</font>(n_x, n_y)<font color="blue"> else </font><font color="red">MultiBody.Frames.axesRotations</font>(
+      sequence, <font color="red">Cv.from_deg</font>(angles)) <font color="darkgreen">
+    &quot;Fixed relative orientation object to rotate from frame_a to frame_b&quot;</font>;
+  <A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>MultiBody.Frames.Orientation</A> R_rel_inv=<font color="red">MultiBody.Frames.inverseRotation</font>(
+      R_rel) <font color="darkgreen">&quot;Inverse of R_rel (rotate from frame_b to frame_a)&quot;</font>;
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">outer </font><A HREF="MultiBody.html#MultiBody.World"
+>MultiBody.World</A> world;
+  <font color="blue">parameter </font>Integer ndim=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>MultiBody.Visualizers.Advanced.Shape</A> shape[ndim](
+    <font color="blue">each </font>shapeType=shapeType,
+    <font color="blue">each </font>color=color,
+    <font color="blue">each </font>r_shape=r_shape,
+    <font color="blue">each </font>lengthDirection=lengthDirection,
+    <font color="blue">each </font>widthDirection=widthDirection,
+    <font color="blue">each </font>length=length,
+    <font color="blue">each </font>width=width,
+    <font color="blue">each </font>height=height,
+    <font color="blue">each </font>extra=extra,
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+<font color="blue">equation </font>
+  <font color="darkgreen"></font>
+  <font color="red">defineBranch</font>(frame_a.R, frame_b.R);
+  <font color="red">assert</font>(<font color="red">cardinality</font>(frame_a) &gt; 0<font color="blue"> or </font><font color="red">cardinality</font>(frame_b) &gt; 0,
+    &quot;Neither connector frame_a nor frame_b of FixedRotation object is connected&quot;);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* Relationships between quantities of frame_a and frame_b */</font>
+  frame_b.r_0 = frame_a.r_0 + <font color="red">MultiBody.Frames.resolve1</font>(frame_a.R, r);
+  <font color="blue">if </font><font color="red">rooted</font>(frame_a.R)<font color="blue"> then</font>
+    frame_b.R = <font color="red">MultiBody.Frames.absoluteRotation</font>(frame_a.R, R_rel);
+    <font color="red">zeros</font>(3) = frame_a.f + <font color="red">MultiBody.Frames.resolve1</font>(R_rel, frame_b.f);
+    <font color="red">zeros</font>(3) = frame_a.t + <font color="red">MultiBody.Frames.resolve1</font>(R_rel, frame_b.t) - <font color="red">cross</font>(
+      r, frame_a.f);
+  <font color="blue">else</font>
+    frame_a.R = <font color="red">MultiBody.Frames.absoluteRotation</font>(frame_b.R, R_rel_inv);
+    <font color="red">zeros</font>(3) = frame_b.f + <font color="red">MultiBody.Frames.resolve1</font>(R_rel_inv, frame_a.f);
+    <font color="red">zeros</font>(3) = frame_b.t + <font color="red">MultiBody.Frames.resolve1</font>(R_rel_inv, frame_a.t) + <font color="red">
+      cross</font>(r, frame_b.f);
+  <font color="blue">end if</font>;
+<font color="blue">end </font>FixedRotation;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE Body<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Parts.BodyI.png" ALT="MultiBody.Parts.Body" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Parts.Body"></A><A HREF="MultiBody_Parts.html#MultiBody.Parts"
+>MultiBody.Parts</A>.Body</H2>
+<B>Rigid body with mass, inertia tensor and one frame connector (12 potential states)</B><p>
+<IMG SRC="MultiBody.Parts.BodyD.png" ALT="MultiBody.Parts.Body">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+<b>Rigid body</b> with mass and inertia tensor.
+All parameter vectors have to be resolved in frame_a.
+The <b>inertia tensor</b> has to be defined with respect to a
+coordinate system that is parallel to frame_a with the
+origin at the center of mass of the body.
+</p>
+<p>
+By default, this component is visualized by a <b>cylinder</b> located
+between frame_a and the center of mass and by a <b>sphere</b> that has
+its center at the center of mass. If the cylinder length is smaller as
+the radius of the sphere, e.g., since frame_a is located at the
+center of mass, the cylinder is not displayed. Note, that
+the animation may be switched off via parameter animation = <b>false</b>.
+</p>
+<IMG SRC="../Images/Body.png" ALT="Parts.Body">
+<p>
+Every body has potential states. If possible a tool will select
+the states of joints and not the states of bodies because this is
+usually the most efficient choice. In this case the position, orientation,
+velocity and angular velocity of frame_a of the body will be computed
+by the component that is connected to frame_a. However, if a body is moving
+freely in space, the states of the body have to be used. The
+states of the body are:
+</p>
+<ul>
+<li> The <b>position vector</b> frame_a.r_0 from the origin of the
+     world frame to the origin of frame_a of the body, resolved in
+     the world frame.</li>
+<li> <b>3 Cardan angles</b> to rotate along axis x of frame "fix"
+     with angle phi[1], along axis y with angle phi[2] and
+     finally along axis z with angle phi[3] arriving at frame_a.
+     Frame "<b>fix</b>" is a coordinate system that is fixed relatively
+     to the world frame. Whenever the Cardan angles come close to
+     their singular configuration, frame "fix" is changed, such
+     that the new Cardan angles are far away from their
+     singularity, i.e., a singular configuration will never occur.
+     The initial values of the Cardan angle states are automatically
+     computed from the initial values given via the
+     <b>sequence_start</b> and <b>angles_start</b> values.
+     Since the Cardan angles are defined relatively to a frame fix that
+     is changing during simulation, these variables are not very
+     descriptive. It is better to use the orientation object frame_a.R
+     to get information about the body orientation.</li>
+<li> The <b>absolute velocity</b> v_0 of the origin of frame_a,
+     resolved in the world frame (= der(frame_a.r_0)).</li>
+<li> The <b>absolute angular velocity</b> w_a of frame_a with
+     respect to the world frame, resolved in frame_a.</li>
+</ul>
+<p>
+Alternatively, as body states <b>4 quaternions</b> can be used instead
+of the 3 Cardan angles,
+by setting parameter <b>useQuaternions</b> in the "Advanced" menu
+to <b>true</b>. Quaternions do not have a singular configuration and
+therefore no state events will occur during simulation, as it is
+necessary for the Cardan angles to change the base frame "fix".
+The disadvantage of quaternions is that there is a non-linear constraint
+equation between the 4 quaternions. Therefore, at least one non-linear
+equation has to be solved per body during simulation.
+In most cases, the Cardan angle choice will be more efficient as the
+quaternion choice, but there may be cases where quaternions are better
+suited.
+</p>
+<pre></PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show cylinder and sphere)</TD></TR>
+<TR><TD>r_CM[3]</TD><TD>{0,0,0}</TD><TD>Vector from frame_a to center of mass, resolved in frame_a [m]</TD></TR>
+<TR><TD>m</TD><TD>1</TD><TD>Mass of rigid body [kg]</TD></TR>
+<TR><TD>I_11</TD><TD>0.001</TD><TD> (1,1) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_22</TD><TD>0.001</TD><TD> (2,2) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_33</TD><TD>0.001</TD><TD> (3,3) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_21</TD><TD>0</TD><TD> (2,1) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_31</TD><TD>0</TD><TD> (3,1) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_32</TD><TD>0</TD><TD> (3,2) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>r_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of frame_a.r_0 (vector from origin of world frame to origin of frame_a resolved in world frame) [m]</TD></TR>
+<TR><TD>sequence_start</TD><TD>{1,2,3}</TD><TD> Sequence of rotations to rotate world frame into frame_a at initial time</TD></TR>
+<TR><TD>angles_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a [deg]</TD></TR>
+<TR><TD>v_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of velocity v_0 = der(frame_a.r_0) [m/s]</TD></TR>
+<TR><TD>w_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular velocity of frame_a resolved in world frame [deg/s]</TD></TR>
+<TR><TD>a_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of acceleration a_0 = der(v_0) [m/s2]</TD></TR>
+<TR><TD>z_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular acceleration z_0 = der(w_0) [deg/s2]</TD></TR>
+<TR><TD>sphereDiameter</TD><TD>world.defaultBodyDiameter</TD><TD> Diameter of sphere [m]</TD></TR>
+<TR><TD>sphereColor</TD><TD>MultiBody.Types.Defaults.BodyColor</TD><TD> Color of sphere</TD></TR>
+<TR><TD>cylinderDiameter</TD><TD>sphereDiameter/MultiBody.Types.Defaults.BodyCylinderDiameterFraction</TD><TD> Diameter of cylinder [m]</TD></TR>
+<TR><TD>cylinderColor</TD><TD>sphereColor</TD><TD> Color of cylinder</TD></TR>
+<TR><TD>useQuaternions</TD><TD>true</TD><TD> = true, if quaternions shall be utilized when body states are required, otherwise switch between sets of 3 Cardan angles</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if absolute variables of body object shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> Body <font color="darkgreen">
+  &quot;Rigid body with mass, inertia tensor and one frame connector (12 potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">import </font>Cv = Modelica.SIunits.Conversions;
+  <font color="blue">import </font>Modelica.Math.*;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>Interfaces.Frame_a</A> frame_a(r_0(start=r_0_start), R(start=R_start));
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">
+    &quot;= true, if animation shall be enabled (show cylinder and sphere)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_CM[3]={0,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to center of mass, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Mass m=1 <font color="darkgreen">&quot;Mass of rigid body&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_11=0.001 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (1,1) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_22=0.001 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (2,2) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_33=0.001 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (3,3) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_21=0 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (2,1) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_31=0 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (3,1) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_32=0 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (3,2) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_Init.html#MultiBody.Types.Init.Temp"
+>Types.Init.Temp</A> initType=Types.Init.Free <font color="darkgreen">
+    &quot;|Initialization|| Type of initialization (defines usage of start values below)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of frame_a.r_0 (vector from origin of world frame to origin of frame_a resolved in world frame)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.RotationSequence"
+>MultiBody.Types.RotationSequence</A> sequence_start={1,2,3} <font color="darkgreen">
+    &quot;|Initialization|| Sequence of rotations to rotate world frame into frame_a at initial time&quot;</font>;
+  <font color="blue">parameter </font>Cv.NonSIunits.Angle_deg angles_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Velocity v_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of velocity v_0 = der(frame_a.r_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angular velocity of frame_a resolved in world frame&quot;</font>;
+  <font color="blue">parameter </font>SI.Acceleration a_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of acceleration a_0 = der(v_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> z_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angular acceleration z_0 = der(w_0)&quot;</font>;
+  <font color="blue">parameter </font>SI.Diameter sphereDiameter=world.defaultBodyDiameter <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of sphere&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> sphereColor=MultiBody.Types.Defaults.BodyColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of sphere&quot;</font>;
+  <font color="blue">parameter </font>SI.Diameter cylinderDiameter=sphereDiameter/MultiBody.Types.
+      Defaults.BodyCylinderDiameterFraction <font color="darkgreen">
+    &quot;|Animation|if animation = true| Diameter of cylinder&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> cylinderColor=sphereColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of cylinder&quot;</font>;
+  <font color="blue">parameter </font>Boolean useQuaternions=true <font color="darkgreen">
+    &quot;|Advanced|| = true, if quaternions shall be utilized when body states are required, otherwise switch between sets of 3 Cardan angles&quot;</font>;
+  <font color="blue">parameter </font>Boolean enforceStates=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if absolute variables of body object shall be used as states&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Inertia I[3, 3]=[I_11, I_21, I_31; I_21, I_22, I_32; I_31,
+       I_32, I_33] <font color="darkgreen">&quot;inertia tensor&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font><A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>Frames.Orientation</A> R_start=<font color="red">MultiBody.Frames.axesRotations</font>(sequence_start, <font color="red">
+      Cv.from_deg</font>(angles_start)) <font color="darkgreen">
+    &quot;Orientation object from world frame to frame_a at initial time&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">final </font><font color="blue">parameter </font>SI.AngularVelocity w_a_start[3]=<font color="red">MultiBody.Frames.resolve2</font>(
+      R_start, w_0_start*Modelica.Constants.D2R);
+  <font color="blue">final </font><font color="blue">parameter </font>SI.AngularAcceleration z_a_start[3]=<font color="red">MultiBody.Frames.resolve2</font>
+      (R_start, z_0_start*Modelica.Constants.D2R);
+  <font color="darkgreen"></font>
+  SI.Velocity v_0[3](start=v_0_start) <font color="darkgreen">
+    &quot;Absolute velocity of frame_a, resolved in world frame&quot;</font>;
+  SI.Acceleration a_0[3] <font color="darkgreen">
+    &quot;Absolute acceleration of frame_a resolved in world frame&quot;</font>;
+  SI.AngularVelocity w_a[3](start=w_a_start) <font color="darkgreen">
+    &quot;Absolute angular velocity of frame_a resolved in frame_a&quot;</font>;
+  SI.AngularAcceleration z_a[3] <font color="darkgreen">
+    &quot;Absolute angular acceleration of frame_a resolved in frame_a&quot;</font>;
+  SI.Acceleration g_0[3] <font color="darkgreen">&quot;Gravity acceleration resolved in world frame&quot;</font>;
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">outer </font><A HREF="MultiBody.html#MultiBody.World"
+>MultiBody.World</A> world;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Declarations for quaternions (dummies, if quaternions are not used)</font>
+  <font color="blue">parameter </font><A HREF="MultiBody_Frames_Quaternions.html#MultiBody.Frames.Quaternions.Orientation"
+>Frames.Quaternions.Orientation</A> Q_start=<font color="red">MultiBody.Frames.to_Q</font>(R_start) <font color="darkgreen">
+    &quot;Quaternion orientation object from world frame to frame_a at initial time&quot;</font>;
+  <A HREF="MultiBody_Frames_Quaternions.html#MultiBody.Frames.Quaternions.Orientation"
+>Frames.Quaternions.Orientation</A> Q(start=Q_start) <font color="darkgreen">
+    &quot;Quaternion orientation object from world frame to frame_a (dummy value, if quaternions are not used as states)&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Declarations for Cardan angles (dummies, if cardan angles are not used)</font>
+  <font color="blue">constant </font>Real phi2_critical=<font color="red">Modelica.SIunits.Conversions.from_deg</font>(80) <font color="darkgreen">
+    &quot;Change frame base when this angle is reached to avoid Cardan angle singularity&quot;</font>;
+  <font color="blue">constant </font>Real c2_small=1.e-5 <font color="darkgreen">
+    &quot;if cos(phi[2]) &lt; c2_small then c2_small is used as guard against zero division&quot;</font>;
+  SI.Angle phi[3] <font color="darkgreen">
+    &quot;Dummy or cardan angles from frame_fixed (fixed in world) to frame_a of body&quot;</font>;
+  Real s1 <font color="darkgreen">&quot;Dummy or sin(phi[1])&quot;</font>;
+  Real s2 <font color="darkgreen">&quot;Dummy or sin(phi[2])&quot;</font>;
+  Real s3 <font color="darkgreen">&quot;Dummy or sin(phi[3])&quot;</font>;
+  Real c1 <font color="darkgreen">&quot;Dummy or cos(phi[1])&quot;</font>;
+  Real c2a <font color="darkgreen">&quot;Dummy or cos(phi[2])&quot;</font>;
+  Real c2 <font color="darkgreen">
+    &quot;Dummy or cos(phi[2]) (there is a guard, that c2 cannot be identical to zero)&quot;</font>;
+  Real c3 <font color="darkgreen">&quot;Dummy or cos(phi[2])&quot;</font>;
+  SI.Angle phi_aux[3] <font color="darkgreen">
+    &quot;Dummy or phi = phi_aux + phi_reinit; der(phi) = der(phi_aux)&quot;</font>;
+  <font color="blue">discrete </font>SI.Angle phi_reinit[3](<font color="blue">each </font>fixed=true, <font color="blue">each </font>start=0) <font color="darkgreen">
+    &quot;Dummy or initial value at events near the singularity of phi, such that phi = 0 after the event&quot;</font>;
+  SI.AngularVelocity phi_d1 <font color="darkgreen">&quot;Dummy or der(phi_d[1])&quot;</font>;
+  Real T_abs[3, 3](start=<font color="red">identity</font>(3)) <font color="darkgreen">
+    &quot;Dummy or absolute transformation matrix from world frame to frame_a of body&quot;</font>;
+  <font color="blue">discrete </font>Real T_fix[3, 3](start=<font color="red">identity</font>(3)) <font color="darkgreen">&quot;Dummy or T_abs = f(phi)*T_fix&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// Declarations for animation</font>
+  <font color="blue">parameter </font>Integer ndim1=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> and </font>
+      cylinderDiameter &gt; 0<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <font color="blue">parameter </font>Integer ndim2=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> and </font>
+      sphereDiameter &gt; 0<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> cylinder[ndim1](
+    <font color="blue">each </font>shapeType=&quot;cylinder&quot;,
+    <font color="blue">each </font>color=cylinderColor,
+    <font color="blue">each </font>length=<font color="blue">if </font><font color="red">MultiBody.Frames.length</font>(r_CM) &gt; sphereDiameter/2<font color="blue"> then </font><font color="red">
+        MultiBody.Frames.length</font>(r_CM) - (<font color="blue">if </font>cylinderDiameter &gt; 1.1*
+        sphereDiameter<font color="blue"> then </font>sphereDiameter/2<font color="blue"> else </font>0)<font color="blue"> else </font>0,
+    <font color="blue">each </font>width=cylinderDiameter,
+    <font color="blue">each </font>height=cylinderDiameter,
+    <font color="blue">each </font>lengthDirection=r_CM,
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> sphere[ndim2](
+    <font color="blue">each </font>shapeType=&quot;sphere&quot;,
+    <font color="blue">each </font>color=sphereColor,
+    <font color="blue">each </font>length=sphereDiameter,
+    <font color="blue">each </font>width=sphereDiameter,
+    <font color="blue">each </font>height=sphereDiameter,
+    <font color="blue">each </font>lengthDirection={1,0,0},
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape=r_CM - {1,0,0}*sphereDiameter/2,
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  Real TT_fix[3, 3]=<font color="red">MultiBody.Frames.to_T</font>(R_start);
+<font color="blue">initial </font><font color="blue">equation </font>
+  <font color="blue">if </font>initType == Types.Init.Position<font color="blue"> or </font>initType == Types.Init.PositionVelocity<font color="blue">
+       or </font>initType == Types.Init.PositionVelocityAcceleration<font color="blue"> then</font>
+    <font color="darkgreen">// Initialize positional variables</font>
+    frame_a.r_0 = r_0_start;
+    <font color="blue">if </font><font color="blue">not </font><font color="red">isRoot</font>(frame_a.R)<font color="blue"> then</font>
+      <font color="darkgreen">// use equality constraint of orientation object</font>
+      <font color="red">zeros</font>(3) = <font color="red">Frames.Orientation.equalityConstraint</font>(frame_a.R, R_start);
+    <font color="blue">elseif </font>useQuaternions<font color="blue"> then</font>
+      <font color="darkgreen">// use quaternions</font>
+      <font color="red">zeros</font>(3) = <font color="red">Frames.Quaternions.Orientation.equalityConstraint</font>(Q, Q_start);
+    <font color="blue">else</font>
+      <font color="darkgreen">// use Cardan angles</font>
+      phi = <font color="red">Frames.axesRotationsAngles</font>(R_start, {1,2,3});
+    <font color="blue">end if</font>;
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">if </font>initType == Types.Init.PositionVelocity<font color="blue"> or </font>initType == Types.Init.
+      PositionVelocityAcceleration<font color="blue"> or </font>initType == Types.Init.Velocity<font color="blue"> or </font>
+      initType == Types.Init.VelocityAcceleration<font color="blue"> then</font>
+    <font color="darkgreen">// Initialize velocity variables</font>
+    v_0 = v_0_start;
+    w_a = w_a_start;
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">if </font>initType == Types.Init.VelocityAcceleration<font color="blue"> or </font>initType == Types.Init.
+      PositionVelocityAcceleration<font color="blue"> then</font>
+    <font color="darkgreen">// Initialize acceleration variables</font>
+    a_0 = a_0_start;
+    z_a = z_a_start;
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">if </font>initType == Types.Init.SteadyState<font color="blue"> then</font>
+    v_0 = <font color="red">zeros</font>(3);
+    a_0 = <font color="red">zeros</font>(3);
+    w_a = <font color="red">zeros</font>(3);
+    z_a = <font color="red">zeros</font>(3);
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">if </font><font color="red">isRoot</font>(frame_a.R)<font color="blue"> and </font><font color="blue">not </font>useQuaternions<font color="blue"> then</font>
+    T_fix = <font color="red">Frames.to_T</font>(R_start);
+  <font color="blue">else</font>
+    T_fix = <font color="red">identity</font>(3);
+  <font color="blue">end if</font>;
+<font color="blue">equation </font>
+  <font color="blue">if </font>enforceStates<font color="blue"> then</font>
+    <font color="red">defineRoot</font>(frame_a.R);
+  <font color="blue">else</font>
+    <font color="red">definePotentialRoot</font>(frame_a.R);
+  <font color="blue">end if</font>;
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// rotational kinematic differential equations -----------------------</font>
+  <font color="blue">if </font><font color="blue">not </font><font color="red">isRoot</font>(frame_a.R)<font color="blue"> then</font>
+    <font color="darkgreen"></font>
+    <font color="darkgreen">
+      // Body frame is computed somewhere else (variables from else branch are dummies)</font>
+    w_a = <font color="red">Frames.angularVelocity2</font>(frame_a.R, <font color="red">der</font>(frame_a.R));
+    z_a = <font color="red">der</font>(w_a);
+    Q = <font color="red">Frames.Quaternions.nullRotation</font>();
+    s1 = 0;
+    s2 = 0;
+    s3 = 0;
+    c1 = 0;
+    c2 = 0;
+    c2a = 0;
+    c3 = 0;
+    phi = <font color="red">zeros</font>(3);
+    phi_aux = <font color="red">zeros</font>(3);
+    phi_reinit = <font color="red">zeros</font>(3);
+    phi_d1 = 0;
+    T_abs = <font color="red">identity</font>(3);
+    <font color="blue">when </font><font color="red">initial</font>()<font color="blue"> then</font>
+      T_fix = <font color="red">pre</font>(T_fix);
+    <font color="blue">end when</font>;
+    <font color="darkgreen"></font>
+  <font color="blue">elseif </font>useQuaternions<font color="blue"> then</font>
+    <font color="darkgreen">/* Quaternions will be used as potential states
+       leading to dynamic state selection during integration
+    */</font>
+    w_a = <font color="red">Frames.Quaternions.angularVelocity2</font>(Q, <font color="red">der</font>(Q));
+    z_a = <font color="red">der</font>(w_a);
+    frame_a.R = <font color="red">Frames.from_Q</font>(Q);
+    {0} = <font color="red">Frames.Quaternions.orientationConstraint</font>(Q);
+    s1 = 0;
+    s2 = 0;
+    s3 = 0;
+    c1 = 0;
+    c2 = 0;
+    c2a = 0;
+    c3 = 0;
+    phi = <font color="red">zeros</font>(3);
+    phi_aux = <font color="red">zeros</font>(3);
+    phi_reinit = <font color="red">zeros</font>(3);
+    phi_d1 = 0;
+    T_abs = <font color="red">identity</font>(3);
+    <font color="blue">when </font><font color="red">initial</font>()<font color="blue"> then</font>
+      T_fix = <font color="red">pre</font>(T_fix);
+    <font color="blue">end when</font>;
+    <font color="darkgreen"></font>
+  <font color="blue">else</font>
+    Q = <font color="red">Frames.Quaternions.nullRotation</font>();
+    <font color="darkgreen"></font>
+    <font color="darkgreen">// Cardan angles will be used as states (= minimal coordinates)</font>
+    s1 = <font color="red">Modelica.Math.sin</font>(phi[1]);
+    s2 = <font color="red">Modelica.Math.sin</font>(phi[2]);
+    s3 = <font color="red">Modelica.Math.sin</font>(phi[3]);
+    c1 = <font color="red">Modelica.Math.cos</font>(phi[1]);
+    c2a = <font color="red">Modelica.Math.cos</font>(phi[2]);
+    c3 = <font color="red">Modelica.Math.cos</font>(phi[3]);
+    <font color="darkgreen"></font>
+    <font color="darkgreen">/* Below, some expressions are divided by c2a. Due to the change
+     of the base frame T_fix, it is not possible that c2a=0, during
+     continuous simulation. However, at initial time, at internal large
+     steps of the integrator, this may occur resulting in a
+     division by zero. This is avoided by:
+     - an &quot;assert(..)&quot; signals to the integrator to reduce the
+       step size, once the assert conditions become false.
+     - c2 = c2a if c2a is not zero, and c2 is a small value when c2a is
+       around zero.
+  */</font>
+    <font color="red">assert</font>(c2a &gt; c2_small<font color="blue"> or </font>c2a &lt; -c2_small,
+      &quot;Singularity of actual angle sequence reached. Should not occur&quot;);
+    c2 = <font color="red">noEvent</font>(<font color="blue">if </font>c2a &gt; c2_small<font color="blue"> or </font>c2a &lt; -c2_small<font color="blue"> then </font>c2a<font color="blue"> else </font>(<font color="blue">if </font>c2a &gt;=
+      0<font color="blue"> then </font>c2_small<font color="blue"> else </font>-c2_small));
+    <font color="darkgreen"></font>
+    <font color="darkgreen">/* Absolute transformation matrix from world frame to frame_a of body
+       T_abs = [ c3, s3, 0;
+                -s3, c3, 0;
+                  0, 0, 1]*[c2, 0, -s2;
+                             0, 1, 0;
+                            s2, 0, c2]*[1, 0, 0;
+                                        0, c1, s1;
+                                        0, -s1, c1]*T_fix;
+  */</font>
+    T_abs = [c2*c3, c1*s3 + s1*s2*c3, s1*s3 - c1*s2*c3; -c2*s3, c1*c3 - s1*s2*
+      s3, s1*c3 + c1*s2*s3; s2, -s1*c2, c1*c2]*<font color="red">pre</font>(T_fix);
+    frame_a.R = <font color="red">Frames.from_T</font>(T_abs);
+    <font color="darkgreen"></font>
+    <font color="blue">when </font>phi[2] &gt;= phi2_critical<font color="blue"> or </font>phi[2] &lt;= -phi2_critical<font color="blue"> then</font>
+      T_fix = T_abs;
+      phi_reinit = -phi_aux;
+    <font color="blue">end when</font>;
+    phi = phi_aux + <font color="red">pre</font>(phi_reinit);
+    <font color="darkgreen"></font>
+    <font color="darkgreen">/*
+     w_a ={0,0,phi_d[3]} + [ c3, s3, 0;
+                            -s3, c3, 0;
+                              0,  0, 1]*{0,phi_d[2],0} + [ c3, s3, 0;
+                                                          -s3, c3, 0;
+                                                            0,  0, 1]*[c2, 0, -s2;
+                                                                        0, 1, 0;
+                                                                        s2, 0, c2]*{phi_d[1],0,0}
+         = A(phi)*phi_d
+     -&gt; phi_d = inv(A)*w_a
+   */</font>
+    phi_d1 = (c3*w_a[1] - s3*w_a[2])/c2;
+    <font color="red">der</font>(phi_aux) = {phi_d1,c3*w_a[2] + s3*w_a[1],w_a[3] - s2*phi_d1};
+    <font color="red">der</font>(w_a) = z_a;
+  <font color="blue">end if</font>;
+  <font color="darkgreen">// end of rotational kinematic differential equations ------------------</font>
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// translational kinematic differential equations</font>
+  v_0 = <font color="red">der</font>(frame_a.r_0);
+  a_0 = <font color="red">der</font>(v_0);
+  <font color="darkgreen"></font>
+  <font color="darkgreen">// gravity acceleration at center of mass resolved in world frame</font>
+  g_0 = <font color="red">world.gravityAcceleration</font>(frame_a.r_0 + <font color="red">Frames.resolve1</font>(frame_a.R, r_CM));
+  <font color="darkgreen"></font>
+  <font color="darkgreen">/* Newton/Euler equations with respect to frame_a
+     - The equations are written with respect to frame_a, since usually
+       variables at a specific geometric point are better suited as
+       state variables, than variables from the center of mass
+     - The equations are written such that only one vector (a_0 - g0)
+       is transformed from the world frame to frame_a and not two
+       vectors (a_0 and g_0). The original equations are:
+              a_CM = a_a + cross(z_a, r_CM) + cross(w_a, cross(w_a, r_CM));
+              f_CM = m*a_CM - m*g_a;
+              t_CM = I*z_a + cross(w_a, I*w_a);
+         frame_a.f = f_CM
+         frame_a.t = t_CM + cross(r_CM, f_CM);
+  */</font>
+  frame_a.f = m*(<font color="red">Frames.resolve2</font>(frame_a.R, a_0 - g_0) + <font color="red">cross</font>(z_a, r_CM) + <font color="red">
+    cross</font>(w_a, <font color="red">cross</font>(w_a, r_CM)));
+  frame_a.t = I*z_a + <font color="red">cross</font>(w_a, I*w_a) + <font color="red">cross</font>(r_CM, frame_a.f);
+  <font color="darkgreen"></font>
+<font color="blue">end </font>Body;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BodyShape<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Parts.BodyShapeI.png" ALT="MultiBody.Parts.BodyShape" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Parts.BodyShape"></A><A HREF="MultiBody_Parts.html#MultiBody.Parts"
+>MultiBody.Parts</A>.BodyShape</H2>
+<B>Rigid body with mass, inertia tensor, different shapes for animation, and two frame connectors (12 potential states)</B><p>
+<IMG SRC="MultiBody.Parts.BodyShapeD.png" ALT="MultiBody.Parts.BodyShape">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+<b>Rigid body</b> with mass and inertia tensor and <b>two frame connectors</b>.
+All parameter vectors have to be resolved in frame_a.
+The <b>inertia tensor</b> has to be defined with respect to a
+coordinate system that is parallel to frame_a with the
+origin at the center of mass of the body. The coordinate system <b>frame_b</b>
+is always parallel to <b>frame_a</b>.
+</p>
+<p>
+By default, this component is visualized by any <b>shape</b> that can be
+defined with MultiBody.Visualizers.FixedShape. This shape is placed
+between frame_a and frame_b (default: length(shape) = Frames.length(r)).
+Additionally a <b>sphere</b> may be visualized that has
+its center at the center of mass.
+Note, that
+the animation may be switched off via parameter animation = <b>false</b>.
+</p>
+<IMG SRC="../Images/BodyShape.png" ALT="Parts.BodyShape">
+<p>
+The following shapes can be defined via parameter <b>shapeType</b>,
+e.g., shapeType="cone":
+</p>
+<IMG SRC="../Images/FixedShape.png" ALT="Visualizers.FixedShape">
+<p>
+A BodyShape component has potential states. For details of these
+states and of the "Advanced" menu parameters, see model
+<b>MultiBody.Parts.Body</b>.
+</p>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show shape between frame_a and frame_b and optionally a sphere at the center of mass)</TD></TR>
+<TR><TD>animateSphere</TD><TD>true</TD><TD>= true, if mass shall be animated as sphere provided animation=true</TD></TR>
+<TR><TD>r[3]</TD><TD>{0,0,0}</TD><TD>Vector from frame_a to frame_b resolved in frame_a [m]</TD></TR>
+<TR><TD>r_CM[3]</TD><TD>{0,0,0}</TD><TD>Vector from frame_a to center of mass, resolved in frame_a [m]</TD></TR>
+<TR><TD>m</TD><TD>1</TD><TD>Mass of rigid body [kg]</TD></TR>
+<TR><TD>I_11</TD><TD>0.001</TD><TD> (1,1) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_22</TD><TD>0.001</TD><TD> (2,2) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_33</TD><TD>0.001</TD><TD> (3,3) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_21</TD><TD>0</TD><TD> (2,1) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_31</TD><TD>0</TD><TD> (3,1) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>I_32</TD><TD>0</TD><TD> (3,2) element of inertia tensor [kg.m2]</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>r_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of frame_a.r_0 (vector from origin of world frame to origin of frame_a resolved in world frame) [m]</TD></TR>
+<TR><TD>sequence_start</TD><TD>{1,2,3}</TD><TD> Sequence of rotations to rotate world frame into frame_a at initial time</TD></TR>
+<TR><TD>angles_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a [deg]</TD></TR>
+<TR><TD>v_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of velocity v_0 = der(frame_a.r_0) [m/s]</TD></TR>
+<TR><TD>w_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular velocity of frame_a resolved in world frame [deg/s]</TD></TR>
+<TR><TD>a_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of acceleration a_0 = der(v_0) [m/s2]</TD></TR>
+<TR><TD>z_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular acceleration z_0 = der(w_0) [deg/s2]</TD></TR>
+<TR><TD>shapeType</TD><TD>&quot;cylinder&quot;</TD><TD> Type of shape</TD></TR>
+<TR><TD>r_shape[3]</TD><TD>{0,0,0}</TD><TD> Vector from frame_a to shape origin, resolved in frame_a [m]</TD></TR>
+<TR><TD>lengthDirection</TD><TD>r - r_shape</TD><TD> Vector in length direction of shape, resolved in frame_a</TD></TR>
+<TR><TD>widthDirection</TD><TD>{0,1,0}</TD><TD> Vector in width direction of shape, resolved in frame_a</TD></TR>
+<TR><TD>length</TD><TD>Frames.length(r - r_shape)</TD><TD> Length of shape [m]</TD></TR>
+<TR><TD>width</TD><TD>length/world.defaultWidthFraction</TD><TD> Width of shape [m]</TD></TR>
+<TR><TD>height</TD><TD>width</TD><TD> Height of shape. [m]</TD></TR>
+<TR><TD>extra</TD><TD>0.0</TD><TD> Additional parameter depending on shapeType (see docu of Visualizers.Advanced.Shape).</TD></TR>
+<TR><TD>color</TD><TD>MultiBody.Types.Defaults.BodyColor</TD><TD> Color of shape</TD></TR>
+<TR><TD>sphereDiameter</TD><TD>2*width</TD><TD> Diameter of sphere [m]</TD></TR>
+<TR><TD>sphereColor</TD><TD>color</TD><TD> Color of sphere of mass</TD></TR>
+<TR><TD>useQuaternions</TD><TD>true</TD><TD> = true, if quaternions shall be utilized when body states are required, otherwise switch between sets of 3 Cardan angles</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if absolute variables of body object shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> BodyShape <font color="darkgreen">
+  &quot;Rigid body with mass, inertia tensor, different shapes for animation, and two frame connectors (12 potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">import </font>NonSI = Modelica.SIunits.Conversions.NonSIunits;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>Interfaces.Frame_a</A> frame_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>Interfaces.Frame_b</A> frame_b;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">
+    &quot;= true, if animation shall be enabled (show shape between frame_a and frame_b and optionally a sphere at the center of mass)&quot;</font>;
+  <font color="blue">parameter </font>Boolean animateSphere=true <font color="darkgreen">
+    &quot;= true, if mass shall be animated as sphere provided animation=true&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r[3]={0,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to frame_b resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_CM[3]={0,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to center of mass, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Mass m=1 <font color="darkgreen">&quot;Mass of rigid body&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_11=0.001 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (1,1) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_22=0.001 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (2,2) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_33=0.001 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (3,3) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_21=0 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (2,1) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_31=0 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (3,1) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font>SI.Inertia I_32=0 <font color="darkgreen">
+    &quot;|Inertia tensor (resolved in center of mass, parallel to frame_a)| (3,2) element of inertia tensor&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_Init.html#MultiBody.Types.Init.Temp"
+>Types.Init.Temp</A> initType=Types.Init.Free <font color="darkgreen">
+    &quot;|Initialization|| Type of initialization (defines usage of start values below)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of frame_a.r_0 (vector from origin of world frame to origin of frame_a resolved in world frame)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.RotationSequence"
+>MultiBody.Types.RotationSequence</A> sequence_start={1,2,3} <font color="darkgreen">
+    &quot;|Initialization|| Sequence of rotations to rotate world frame into frame_a at initial time&quot;</font>;
+  <font color="blue">parameter </font>NonSI.Angle_deg angles_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Velocity v_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of velocity v_0 = der(frame_a.r_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angular velocity of frame_a resolved in world frame&quot;</font>;
+  <font color="blue">parameter </font>SI.Acceleration a_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of acceleration a_0 = der(v_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> z_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angular acceleration z_0 = der(w_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.ShapeType"
+>MultiBody.Types.ShapeType</A> shapeType=&quot;cylinder&quot; <font color="darkgreen">
+    &quot;|Animation|if animation = true| Type of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_shape[3]={0,0,0} <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector from frame_a to shape origin, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> lengthDirection=r - r_shape <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector in length direction of shape, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> widthDirection={0,1,0} <font color="darkgreen">
+    &quot;|Animation|if animation = true| Vector in width direction of shape, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Length length=<font color="red">Frames.length</font>(r - r_shape) <font color="darkgreen">
+    &quot;|Animation|if animation = true| Length of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance width=length/world.defaultWidthFraction <font color="darkgreen">
+    &quot;|Animation|if animation = true| Width of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance height=width <font color="darkgreen">
+    &quot;|Animation|if animation = true| Height of shape.&quot;</font>;
+  <font color="blue">parameter </font>Real extra=0.0 <font color="darkgreen">
+    &quot;|Animation|if animation = true| Additional parameter depending on shapeType (see docu of Visualizers.Advanced.Shape).&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> color=MultiBody.Types.Defaults.BodyColor <font color="darkgreen">
+    &quot;|Animation|if animation = true| Color of shape&quot;</font>;
+  <font color="blue">parameter </font>SI.Diameter sphereDiameter=2*width <font color="darkgreen">
+    &quot;|Animation|if animation = true and animateSphere = true| Diameter of sphere&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> sphereColor=color <font color="darkgreen">
+    &quot;|Animation|if animation = true and animateSphere = true| Color of sphere of mass&quot;</font>;
+  <font color="blue">parameter </font>Boolean useQuaternions=true <font color="darkgreen">
+    &quot;|Advanced|| = true, if quaternions shall be utilized when body states are required, otherwise switch between sets of 3 Cardan angles&quot;</font>;
+  <font color="blue">parameter </font>Boolean enforceStates=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if absolute variables of body object shall be used as states&quot;</font>;
+  <font color="darkgreen"></font>
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>FixedTranslation</A> frameTranslation(r=r, animation=false);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.Body"
+>Body</A> body(
+    r_CM=r_CM,
+    m=m,
+    I_11=I_11,
+    I_22=I_22,
+    I_33=I_33,
+    I_21=I_21,
+    I_31=I_31,
+    I_32=I_32,
+    animation=false,
+    initType=initType,
+    r_0_start=r_0_start,
+    sequence_start=sequence_start,
+    angles_start=angles_start,
+    v_0_start=v_0_start,
+    w_0_start=w_0_start,
+    a_0_start=a_0_start,
+    z_0_start=z_0_start,
+    useQuaternions=useQuaternions,
+    enforceStates=enforceStates);
+<font color="blue">protected </font>
+  <font color="blue">outer </font><A HREF="MultiBody.html#MultiBody.World"
+>MultiBody.World</A> world;
+  <font color="blue">parameter </font>Integer ndim1=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <font color="blue">parameter </font>Integer ndim2=<font color="blue">if </font>world.enableAnimation<font color="blue"> and </font>animation<font color="blue"> and </font>
+      animateSphere<font color="blue"> then </font>1<font color="blue"> else </font>0;
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> shape1[ndim1](
+    <font color="blue">each </font>shapeType=shapeType,
+    <font color="blue">each </font>color=color,
+    <font color="blue">each </font>length=length,
+    <font color="blue">each </font>width=width,
+    <font color="blue">each </font>height=height,
+    <font color="blue">each </font>lengthDirection=lengthDirection,
+    <font color="blue">each </font>widthDirection=widthDirection,
+    <font color="blue">each </font>r_shape=r_shape,
+    <font color="blue">each </font>extra=extra,
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+  <A HREF="MultiBody_Visualizers_Advanced.html#MultiBody.Visualizers.Advanced.Shape"
+>Visualizers.Advanced.Shape</A> shape2[ndim2](
+    <font color="blue">each </font>shapeType=&quot;sphere&quot;,
+    <font color="blue">each </font>color=sphereColor,
+    <font color="blue">each </font>length=sphereDiameter,
+    <font color="blue">each </font>width=sphereDiameter,
+    <font color="blue">each </font>height=sphereDiameter,
+    <font color="blue">each </font>lengthDirection={1,0,0},
+    <font color="blue">each </font>widthDirection={0,1,0},
+    <font color="blue">each </font>r_shape=r_CM - {1,0,0}*sphereDiameter/2,
+    <font color="blue">each </font>r=frame_a.r_0,
+    <font color="blue">each </font>R=frame_a.R);
+<font color="blue">equation </font>
+  <font color="red">connect</font>(frame_a, frameTranslation.frame_a);
+  <font color="red">connect</font>(frame_b, frameTranslation.frame_b);
+  <font color="red">connect</font>(frame_a, body.frame_a);
+<font color="blue">end </font>BodyShape;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BodyBox<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Parts.BodyBoxI.png" ALT="MultiBody.Parts.BodyBox" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Parts.BodyBox"></A><A HREF="MultiBody_Parts.html#MultiBody.Parts"
+>MultiBody.Parts</A>.BodyBox</H2>
+<B>Rigid body with box shape. Mass and animation properties are computed from box data and density (12 potential states)</B><p>
+<IMG SRC="MultiBody.Parts.BodyBoxD.png" ALT="MultiBody.Parts.BodyBox">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+<b>Rigid body</b> with <b>box</b> shape.
+The mass properties of the body (mass, center of mass,
+inertia tensor) are computed
+from the box data. Optionally, the box may be hollow.
+The (outer) box shape is by default used in the animation.
+The hollow part is not shown in the animation.
+The two connector frames <b>frame_a</b> and <b>frame_b</b>
+are always parallel to each other. Example of component
+animation (note, that
+the animation may be switched off via parameter animation = <b>false</b>):
+</p>
+<IMG SRC="../Images/BodyBox.png" ALT="Parts.BodyBox">
+<p>
+A BodyBox component has potential states. For details of these
+states and of the "Advanced" menu parameters, see model
+<b>MultiBody.Parts.Body</b>.
+</p>
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show box between frame_a and frame_b)</TD></TR>
+<TR><TD>r[3]</TD><TD>{0.1,0,0}</TD><TD>Vector from frame_a to frame_b resolved in frame_a [m]</TD></TR>
+<TR><TD>r_shape[3]</TD><TD>{0,0,0}</TD><TD>Vector from frame_a to box origin, resolved in frame_a [m]</TD></TR>
+<TR><TD>lengthDirection</TD><TD>r - r_shape</TD><TD>Vector in length direction of box, resolved in frame_a</TD></TR>
+<TR><TD>widthDirection</TD><TD>{0,1,0}</TD><TD>Vector in width direction of box, resolved in frame_a</TD></TR>
+<TR><TD>length</TD><TD>Frames.length(r - r_shape)</TD><TD>Length of box [m]</TD></TR>
+<TR><TD>width</TD><TD>length/world.defaultWidthFraction</TD><TD>Width of box [m]</TD></TR>
+<TR><TD>height</TD><TD>width</TD><TD>Height of box [m]</TD></TR>
+<TR><TD>innerWidth</TD><TD>0</TD><TD>Width of inner box surface (0 &lt;= innerWidth &lt;= width) [m]</TD></TR>
+<TR><TD>innerHeight</TD><TD>innerWidth</TD><TD>Height of inner box surface (0 &lt;= innerHeight &lt;= height) [m]</TD></TR>
+<TR><TD>density</TD><TD>7.7</TD><TD>Density of box (e.g., steel: 7.7 .. 7.9, wood : 0.4 .. 0.8) [g/cm3]</TD></TR>
+<TR><TD>color</TD><TD>MultiBody.Types.Defaults.BodyColor</TD><TD>Color of box</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>r_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of frame_a.r_0 (vector from origin of world frame to origin of frame_a resolved in world frame) [m]</TD></TR>
+<TR><TD>sequence_start</TD><TD>{1,2,3}</TD><TD> Sequence of rotations to rotate world frame into frame_a at initial time</TD></TR>
+<TR><TD>angles_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a [deg]</TD></TR>
+<TR><TD>v_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of velocity v_0 = der(frame_a.r_0) [m/s]</TD></TR>
+<TR><TD>w_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular velocity of frame_a resolved in world frame [deg/s]</TD></TR>
+<TR><TD>a_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of acceleration a_0 = der(v_0) [m/s2]</TD></TR>
+<TR><TD>z_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular acceleration z_0 = der(w_0) [deg/s2]</TD></TR>
+<TR><TD>useQuaternions</TD><TD>true</TD><TD> = true, if quaternions shall be utilized when body states are required, otherwise switch between sets of 3 Cardan angles</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if absolute variables of body object shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> BodyBox <font color="darkgreen">
+  &quot;Rigid body with box shape. Mass and animation properties are computed from box data and density (12 potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">import </font>NonSI = Modelica.SIunits.Conversions.NonSIunits;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>Interfaces.Frame_a</A> frame_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>Interfaces.Frame_b</A> frame_b;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">
+    &quot;= true, if animation shall be enabled (show box between frame_a and frame_b)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r[3]={0.1,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to frame_b resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_shape[3]={0,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to box origin, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> lengthDirection=r - r_shape <font color="darkgreen">
+    &quot;Vector in length direction of box, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> widthDirection={0,1,0} <font color="darkgreen">
+    &quot;Vector in width direction of box, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Length length=<font color="red">Frames.length</font>(r - r_shape) <font color="darkgreen">&quot;Length of box&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance width=length/world.defaultWidthFraction <font color="darkgreen">&quot;Width of box&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance height=width <font color="darkgreen">&quot;Height of box&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance innerWidth=0 <font color="darkgreen">
+    &quot;Width of inner box surface (0 &lt;= innerWidth &lt;= width)&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance innerHeight=innerWidth <font color="darkgreen">
+    &quot;Height of inner box surface (0 &lt;= innerHeight &lt;= height)&quot;</font>;
+  <font color="blue">parameter </font>Real density(
+    quantity=&quot;Density&quot;,
+    unit=&quot;g/cm3&quot;,
+    min=0) = 7.7 <font color="darkgreen">&quot;Density of box (e.g., steel: 7.7 .. 7.9, wood : 0.4 .. 0.8)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> color=MultiBody.Types.Defaults.BodyColor <font color="darkgreen">
+    &quot;Color of box&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_Init.html#MultiBody.Types.Init.Temp"
+>Types.Init.Temp</A> initType=Types.Init.Free <font color="darkgreen">
+    &quot;|Initialization|| Type of initialization (defines usage of start values below)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of frame_a.r_0 (vector from origin of world frame to origin of frame_a resolved in world frame)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.RotationSequence"
+>MultiBody.Types.RotationSequence</A> sequence_start={1,2,3} <font color="darkgreen">
+    &quot;|Initialization|| Sequence of rotations to rotate world frame into frame_a at initial time&quot;</font>;
+  <font color="blue">parameter </font>NonSI.Angle_deg angles_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Velocity v_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of velocity v_0 = der(frame_a.r_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angular velocity of frame_a resolved in world frame&quot;</font>;
+  <font color="blue">parameter </font>SI.Acceleration a_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of acceleration a_0 = der(v_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> z_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angular acceleration z_0 = der(w_0)&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean useQuaternions=true <font color="darkgreen">
+    &quot;|Advanced|| = true, if quaternions shall be utilized when body states are required, otherwise switch between sets of 3 Cardan angles&quot;</font>;
+  <font color="blue">parameter </font>Boolean enforceStates=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if absolute variables of body object shall be used as states&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Mass mo=1000*density*length*width*height <font color="darkgreen">
+    &quot;Mass of box without hole&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Mass mi=1000*density*length*innerWidth*innerHeight <font color="darkgreen">
+    &quot;Mass of hole of box&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Mass m=mo - mi <font color="darkgreen">&quot;Mass of box&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font><A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>Frames.Orientation</A> R=<font color="red">Frames.from_nxy</font>(r, widthDirection);
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Position r_CM[3]=<font color="red">Frames.normalize</font>(r)*length/2;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Inertia I[3, 3]=<font color="red">Frames.resolveDyade1</font>(R, <font color="red">diagonal</font>({mo*(
+      width*width + height*height) - mi*(innerWidth*innerWidth + innerHeight*
+      innerHeight),mo*(length*length + height*height) - mi*(length*length +
+      innerHeight*innerHeight),mo*(length*length + width*width) - mi*(length*
+      length + innerWidth*innerWidth)}/12));
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.Body"
+>Body</A> body(
+    animation=false,
+    r_CM=r_CM,
+    m=m,
+    I_11=I[1, 1],
+    I_22=I[2, 2],
+    I_33=I[3, 3],
+    I_21=I[2, 1],
+    I_31=I[3, 1],
+    I_32=I[3, 2],
+    initType=initType,
+    r_0_start=r_0_start,
+    sequence_start=sequence_start,
+    angles_start=angles_start,
+    v_0_start=v_0_start,
+    w_0_start=w_0_start,
+    a_0_start=a_0_start,
+    z_0_start=z_0_start,
+    useQuaternions=useQuaternions,
+    enforceStates=enforceStates);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>FixedTranslation</A> frameTranslation(
+    r=r,
+    animation=animation,
+    shapeType=&quot;box&quot;,
+    r_shape=r_shape,
+    lengthDirection=lengthDirection,
+    widthDirection=widthDirection,
+    length=length,
+    width=width,
+    height=height,
+    color=color);
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">outer </font><A HREF="MultiBody.html#MultiBody.World"
+>MultiBody.World</A> world;
+<font color="blue">equation </font>
+  <font color="darkgreen"></font>
+  <font color="red">assert</font>(innerWidth &lt;= width,
+    &quot;parameter innerWidth is greater as parameter width&quot;);
+  <font color="red">assert</font>(innerHeight &lt;= height,
+    &quot;parameter innerHeight is greater as paraemter height&quot;);
+  <font color="red">connect</font>(body.frame_a, frame_a);
+  <font color="red">connect</font>(frameTranslation.frame_b, frame_b);
+  <font color="red">connect</font>(frameTranslation.frame_a, frame_a);
+<font color="blue">end </font>BodyBox;
+</PRE>
+<HR>
+<!--[if supportFields]><span style='mso-element:field-begin'></span>
+<span style='mso-spacerun:yes'></span>XE BodyCylinder<![endif]-->
+<!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+<H2><IMG SRC="MultiBody.Parts.BodyCylinderI.png" ALT="MultiBody.Parts.BodyCylinder" ALIGN=RIGHT BORDER=1 WIDTH=80  HEIGHT=80 >
+<A NAME="MultiBody.Parts.BodyCylinder"></A><A HREF="MultiBody_Parts.html#MultiBody.Parts"
+>MultiBody.Parts</A>.BodyCylinder</H2>
+<B>Rigid body with cylinder shape. Mass and animation properties are computed from cylinder data and density (12 potential states)</B><p>
+<IMG SRC="MultiBody.Parts.BodyCylinderD.png" ALT="MultiBody.Parts.BodyCylinder">
+<H3>Information</H3>
+<PRE></pre>
+<p>
+<b>Rigid body</b> with <b>cylinder</b> shape.
+The mass properties of the body (mass, center of mass,
+inertia tensor) are computed
+from the cylinder data. Optionally, the cylinder may be hollow.
+The cylinder shape is by default used in the animation.
+The two connector frames <b>frame_a</b> and <b>frame_b</b>
+are always parallel to each other. Example of component
+animation (note, that
+the animation may be switched off via parameter animation = <b>false</b>):
+</p>
+<IMG SRC="../Images/BodyCylinder.png" ALT="Parts.BodyCylinder">
+<p>
+A BodyCylinder component has potential states. For details of these
+states and of the "Advanced" menu parameters, see model
+<b>MultiBody.Parts.Body</b>.
+<pre>
+</PRE>
+<H3>Parameters</H3><P>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2>
+<TR><TH>Name</TH><TH>Default</TH><TH>Description</TH></TR>
+<TR><TD>animation</TD><TD>true</TD><TD>= true, if animation shall be enabled (show cylinder between frame_a and frame_b)</TD></TR>
+<TR><TD>r[3]</TD><TD>{0.1,0,0}</TD><TD>Vector from frame_a to frame_b, resolved in frame_a [m]</TD></TR>
+<TR><TD>r_shape[3]</TD><TD>{0,0,0}</TD><TD>Vector from frame_a to cylinder origin, resolved in frame_a [m]</TD></TR>
+<TR><TD>lengthDirection</TD><TD>r - r_shape</TD><TD>Vector in length direction of cylinder, resolved in frame_a</TD></TR>
+<TR><TD>length</TD><TD>Frames.length(r - r_shape)</TD><TD>Length of cylinder [m]</TD></TR>
+<TR><TD>diameter</TD><TD>length/world.defaultWidthFraction</TD><TD>Diameter of cylinder [m]</TD></TR>
+<TR><TD>innerDiameter</TD><TD>0</TD><TD>Inner diameter of cylinder (0 &lt;= innerDiameter &lt;= Diameter) [m]</TD></TR>
+<TR><TD>density</TD><TD>7.7</TD><TD>Density of cylinder (e.g., steel: 7.7 .. 7.9, wood : 0.4 .. 0.8) [g/cm3]</TD></TR>
+<TR><TD>color</TD><TD>MultiBody.Types.Defaults.BodyColor</TD><TD>Color of cylinder</TD></TR>
+<TR><TD>initType</TD><TD>Types.Init.Free</TD><TD> Type of initialization (defines usage of start values below)</TD></TR>
+<TR><TD>r_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of frame_a.r_0 (vector from origin of world frame to origin of frame_a resolved in world frame) [m]</TD></TR>
+<TR><TD>sequence_start</TD><TD>{1,2,3}</TD><TD> Sequence of rotations to rotate world frame into frame_a at initial time</TD></TR>
+<TR><TD>angles_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a [deg]</TD></TR>
+<TR><TD>v_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of velocity v_0 = der(frame_a.r_0) [m/s]</TD></TR>
+<TR><TD>w_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular velocity of frame_a resolved in world frame [deg/s]</TD></TR>
+<TR><TD>a_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of acceleration a_0 = der(v_0) [m/s2]</TD></TR>
+<TR><TD>z_0_start[3]</TD><TD>{0,0,0}</TD><TD> Initial values of angular acceleration z_0 = der(w_0) [deg/s2]</TD></TR>
+<TR><TD>useQuaternions</TD><TD>true</TD><TD> = true, if quaternions shall be utilized when body states are required, otherwise switch between sets of 3 Cardan angles</TD></TR>
+<TR><TD>enforceStates</TD><TD>false</TD><TD> = true, if absolute variables of body object shall be used as states</TD></TR>
+</TABLE>
+<H3>Modelica definition</H3>
+<PRE>
+<font color="blue">model</font> BodyCylinder <font color="darkgreen">
+  &quot;Rigid body with cylinder shape. Mass and animation properties are computed from cylinder data and density (12 potential states)&quot;</font>
+
+  <font color="darkgreen"></font>
+  <font color="blue">import </font>SI = Modelica.SIunits;
+  <font color="blue">import </font>NonSI = Modelica.SIunits.Conversions.NonSIunits;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_a"
+>Interfaces.Frame_a</A> frame_a;
+  <A HREF="MultiBody_Interfaces.html#MultiBody.Interfaces.Frame_b"
+>Interfaces.Frame_b</A> frame_b;
+  <font color="blue">parameter </font>Boolean animation=true <font color="darkgreen">
+    &quot;= true, if animation shall be enabled (show cylinder between frame_a and frame_b)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r[3]={0.1,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to frame_b, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_shape[3]={0,0,0} <font color="darkgreen">
+    &quot;Vector from frame_a to cylinder origin, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Axis"
+>MultiBody.Types.Axis</A> lengthDirection=r - r_shape <font color="darkgreen">
+    &quot;Vector in length direction of cylinder, resolved in frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Length length=<font color="red">Frames.length</font>(r - r_shape) <font color="darkgreen">&quot;Length of cylinder&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance diameter=length/world.defaultWidthFraction <font color="darkgreen">
+    &quot;Diameter of cylinder&quot;</font>;
+  <font color="blue">parameter </font>SI.Distance innerDiameter=0 <font color="darkgreen">
+    &quot;Inner diameter of cylinder (0 &lt;= innerDiameter &lt;= Diameter)&quot;</font>;
+  <font color="blue">parameter </font>Real density(
+    quantity=&quot;Density&quot;,
+    unit=&quot;g/cm3&quot;) = 7.7 <font color="darkgreen">
+    &quot;Density of cylinder (e.g., steel: 7.7 .. 7.9, wood : 0.4 .. 0.8)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.Color"
+>MultiBody.Types.Color</A> color=MultiBody.Types.Defaults.BodyColor <font color="darkgreen">
+    &quot;Color of cylinder&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font><A HREF="MultiBody_Types_Init.html#MultiBody.Types.Init.Temp"
+>Types.Init.Temp</A> initType=Types.Init.Free <font color="darkgreen">
+    &quot;|Initialization|| Type of initialization (defines usage of start values below)&quot;</font>;
+  <font color="blue">parameter </font>SI.Position r_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of frame_a.r_0 (vector from origin of world frame to origin of frame_a resolved in world frame)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.RotationSequence"
+>MultiBody.Types.RotationSequence</A> sequence_start={1,2,3} <font color="darkgreen">
+    &quot;|Initialization|| Sequence of rotations to rotate world frame into frame_a at initial time&quot;</font>;
+  <font color="blue">parameter </font>NonSI.Angle_deg angles_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angles to rotate world frame around 'sequence_start' axes into frame_a&quot;</font>;
+  <font color="blue">parameter </font>SI.Velocity v_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of velocity v_0 = der(frame_a.r_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularVelocity_degs"
+>MultiBody.Types.AngularVelocity_degs</A> w_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angular velocity of frame_a resolved in world frame&quot;</font>;
+  <font color="blue">parameter </font>SI.Acceleration a_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of acceleration a_0 = der(v_0)&quot;</font>;
+  <font color="blue">parameter </font><A HREF="MultiBody_Types.html#MultiBody.Types.AngularAcceleration_degs2"
+>MultiBody.Types.AngularAcceleration_degs2</A> z_0_start[3]={0,0,0} <font color="darkgreen">
+    &quot;|Initialization|| Initial values of angular acceleration z_0 = der(w_0)&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">parameter </font>Boolean useQuaternions=true <font color="darkgreen">
+    &quot;|Advanced|| = true, if quaternions shall be utilized when body states are required, otherwise switch between sets of 3 Cardan angles&quot;</font>;
+  <font color="blue">parameter </font>Boolean enforceStates=false <font color="darkgreen">
+    &quot;|Advanced|| = true, if absolute variables of body object shall be used as states&quot;</font>;
+  <font color="darkgreen"></font>
+  <font color="blue">constant </font>Real pi=Modelica.Constants.pi;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Distance radius=diameter/2;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Distance innerRadius=innerDiameter/2;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Mass mo=1000*density*pi*length*radius*radius <font color="darkgreen">
+    &quot;Mass of cylinder without hole&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Mass mi=1000*density*pi*length*innerRadius*innerRadius <font color="darkgreen">
+    &quot;Mass of hole of cylinder&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Inertia I22=(mo*(length*length + 3*radius*radius) - mi*(
+      length*length + 3*innerRadius*innerRadius))/12;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Mass m=mo - mi <font color="darkgreen">&quot;Mass of cylinder&quot;</font>;
+  <font color="blue">final </font><font color="blue">parameter </font><A HREF="MultiBody_Frames.html#MultiBody.Frames.Orientation"
+>Frames.Orientation</A> R=<font color="red">Frames.from_nxy</font>(r, {0,1,0});
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Position r_CM[3]=<font color="red">Frames.normalize</font>(r)*length/2;
+  <font color="blue">final </font><font color="blue">parameter </font>SI.Inertia I[3, 3]=<font color="red">Frames.resolveDyade1</font>(R, <font color="red">diagonal</font>({(mo*
+      radius*radius - mi*innerRadius*innerRadius)/2,I22,I22}));
+  <font color="darkgreen"></font>
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.Body"
+>Body</A> body(
+    r_CM=r_CM,
+    m=m,
+    I_11=I[1, 1],
+    I_22=I[2, 2],
+    I_33=I[3, 3],
+    I_21=I[2, 1],
+    I_31=I[3, 1],
+    I_32=I[3, 2],
+    animation=false,
+    initType=initType,
+    r_0_start=r_0_start,
+    sequence_start=sequence_start,
+    angles_start=angles_start,
+    v_0_start=v_0_start,
+    w_0_start=w_0_start,
+    a_0_start=a_0_start,
+    z_0_start=z_0_start,
+    useQuaternions=useQuaternions,
+    enforceStates=enforceStates);
+  <A HREF="MultiBody_Parts.html#MultiBody.Parts.FixedTranslation"
+>FixedTranslation</A> frameTranslation(
+    r=r,
+    animation=animation,
+    shapeType=&quot;pipecylinder&quot;,
+    r_shape=r_shape,
+    lengthDirection=lengthDirection,
+    length=length,
+    width=diameter,
+    height=diameter,
+    extra=innerDiameter/diameter,
+    color=color,
+    widthDirection={0,1,0});
+  <font color="darkgreen"></font>
+<font color="blue">protected </font>
+  <font color="blue">outer </font><A HREF="MultiBody.html#MultiBody.World"
+>MultiBody.World</A> world;
+<font color="blue">equation </font>
+  <font color="darkgreen"></font>
+  <font color="red">assert</font>(innerDiameter &lt; diameter,
+    &quot;parameter innerDiameter is greater as parameter diameter.&quot;);
+  <font color="red">connect</font>(body.frame_a, frame_a);
+  <font color="red">connect</font>(frameTranslation.frame_b, frame_b);
+  <font color="red">connect</font>(frameTranslation.frame_a, frame_a);
+<font color="blue">end </font>BodyCylinder;
+</PRE>
+<HR>
+<address>HTML-documentation generated by <a href="http://www.dynasim.se/">Dymola</a> Wed Oct 29 09:12:14 2003
+.
+</address></BODY>
+</HTML>
