@@ -7,11 +7,19 @@ This library is deprecated since it has been incorporated in a slightly improved
 The `MultiBody` library is a free Modelica package providing 3-dimensional mechanical components to model in a convenient way mechanical systems, such as robots, mechanisms, vehicles. This package contains a tutorial of the MultiBody library.
 
 
-## Current release
+## Last release
 
-Download [MultiBody v1.0 (2004-03-03)](../../archive/v1.0.zip)
+Download [MultiBody v1.0.1 (2004-07-07)](../../archive/v1.0.1.zip)
 
 #### Release notes
+
+* [Version v1.0.1 (2004-07-07)](../../archive/v1.0.1.zip)
+ * This version fixes only some minor bugs:
+  * Bug in MultiBody.Sensors.RelativeSensor fixed:
+    When frame resolve was connected and `get_v_rel=true` or `get_a_rel=true`, an error was in the code
+  * Bug in MultiBodys.Sensors.Power fixed:
+    A "defineBranch(...)" statement was missing. In certain cases, it was then not possible to generate code
+  * Wrong icon of MultiBody and of MultiBody.Interfaces package corrected.
 
 *  [Version v1.0 (2004-03-03)](../../archive/v1.0.zip)
  * This version is not backward compatible to version 0.99. Models generated with previous MultiBody versions are automatically converted to the new release.The incompatible changes are due to improving the efficiency of the library. This required to change function interfaces in MultiBody.Frames: `angularVelocity1`, `angularVelocity2`, `planarRotation`, `axisRotation`, `axesRotations`, `from_T`, `from_T_inv`, `from_Q`. Furthermore, `MultiBody.Frames.Orientation` has changed. As a consequence, all code that accesses objects of this type directly is no longer valid.
